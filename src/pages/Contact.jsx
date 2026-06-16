@@ -96,7 +96,7 @@ export default function Contact() {
                     <div className="text-2xl mb-2">{icon}</div>
                     <div className="text-xs font-medium text-earth-500 uppercase tracking-wider mb-1">{label}</div>
                     <div className={`${bold ? 'text-red-700 text-xl' : 'text-forest-800 text-lg'} font-bold font-serif`}>{value}</div>
-                    {bold && <div className="text-xs text-red-600 mt-1 font-medium">Strict — no exceptions</div>}
+                    {bold && <div className="text-xs text-red-600 mt-1 font-medium">Strict - no exceptions</div>}
                   </div>
                 ))}
               </div>

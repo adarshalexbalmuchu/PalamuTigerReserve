@@ -32,7 +32,7 @@ export default function PlanCard({ imageUrl, imageAlt, logo, badge, title, locat
           )}
         </div>
 
-        {/* Middle: title + overview — slides up on hover */}
+        {/* Middle: title + overview - slides up on hover */}
         <div className="space-y-3 transition-transform duration-500 ease-in-out group-hover:-translate-y-16 mt-auto">
           <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-white/70 bg-white/10 border border-white/20 px-2.5 py-1 rounded-full mb-1">
             {badge}
@@ -44,7 +44,7 @@ export default function PlanCard({ imageUrl, imageAlt, logo, badge, title, locat
           <p className="text-sm text-white/60 leading-relaxed">{overview}</p>
         </div>
 
-        {/* Bottom: CTA — rises from below on hover */}
+        {/* Bottom: CTA - rises from below on hover */}
         <div className="absolute bottom-0 left-0 w-full px-7 pb-7 translate-y-full opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
           <div className="flex items-center justify-end">
             <span className="inline-flex items-center gap-2 bg-white text-black font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-neutral-100 transition-colors">

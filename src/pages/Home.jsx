@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Phone, ArrowRight, Map, TreePine } from 'lucide-react'
 import { packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
 import PlanCard from '../components/PlanCard.jsx'
+import DestinationCard from '../components/DestinationCard.jsx'
 
 function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
   const [display, setDisplay] = useState(0)
@@ -36,81 +37,9 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
   )
 }
 
-function PackageCard({ pkg }) {
-  return (
-    <div className="card group cursor-pointer">
-      <div className="h-1 bg-black" />
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-3">
-          <span className="text-3xl">{pkg.icon}</span>
-          <span className="text-xs bg-neutral-100 text-neutral-700 font-semibold px-2.5 py-1 rounded-full border border-neutral-200">
-            {pkg.duration} Days
-          </span>
-        </div>
-        <h3 className="font-serif font-bold text-xl text-black mb-1">{pkg.name}</h3>
-        <p className="text-sm text-neutral-500 font-medium mb-4">{pkg.subtitle}</p>
-        <div className="flex items-center justify-between pt-4 border-t border-neutral-100">
-          <div>
-            <div className="text-lg font-bold text-black">
-              ₹{(pkg.estimatedCost.perPerson).toLocaleString()}
-            </div>
-            <div className="text-xs text-neutral-500">per person (2 pax)</div>
-          </div>
-          <Link
-            to="/plan"
-            state={{ packageId: pkg.id }}
-            className="flex items-center gap-1.5 text-sm font-semibold text-neutral-700 group-hover:text-black transition-colors"
-          >
-            View Itinerary <ArrowRight size={15} />
-          </Link>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function PropertyPreviewCard({ p }) {
-  const amenityList = [
-    p.amenities.ac && 'AC',
-    p.amenities.food && 'Food',
-    p.amenities.balcony && 'Balcony',
-    p.amenities.geyser && 'Geyser',
-  ].filter(Boolean)
-
-  return (
-    <Link to={`/stays/${p.id}`} className="card group block">
-      <div className="h-1 bg-black" />
-      <div className="p-5">
-        <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-3 bg-neutral-100 text-neutral-700">
-          {p.zone === 'north' ? 'North Zone' : 'South Zone'}
-        </span>
-        <h3 className="font-serif font-bold text-lg text-black mb-0.5">{p.name}</h3>
-        <p className="text-xs text-neutral-500 mb-3">{p.location}</p>
-        <div className="flex flex-wrap gap-1 mb-4">
-          {amenityList.slice(0, 3).map(a => (
-            <span key={a} className="amenity-chip">{a}</span>
-          ))}
-          {p.units <= 4 && (
-            <span className="amenity-chip text-palash border-palash/20 bg-palash-50">
-              Only {p.units} units
-            </span>
-          )}
-        </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="text-xl font-bold text-black">₹{p.pricePerNight?.toLocaleString()}</span>
-            <span className="text-xs text-neutral-500"> /night</span>
-          </div>
-          <span className="text-sm font-semibold text-neutral-600 group-hover:text-black transition-colors flex items-center gap-1">
-            View <ChevronRight size={15} />
-          </span>
-        </div>
-      </div>
-    </Link>
-  )
-}
 
 export default function Home() {
+  const navigate = useNavigate()
   const featuredProperties = properties.filter(p => ['new-tree-house-betla', 'kechki-beach-cottage', 'netarhat-new-cottage'].includes(p.id))
 
   return (
@@ -157,7 +86,7 @@ export default function Home() {
               badge="Packages"
               title="Browse Packages"
               location="Palamu Tiger Reserve, Jharkhand"
-              overview={`Pre-built itineraries with all logistics handled — from the Classic Betla Weekend to the Wolf & Wilderness ${packages.length > 0 ? packages.length + '-package' : ''} adventure.`}
+              overview={`Pre-built itineraries with all logistics handled - from the Classic Betla Weekend to the Wolf & Wilderness ${packages.length > 0 ? packages.length + '-package' : ''} adventure.`}
               cta="View Packages"
               to="/plan"
               state={{ mode: 'packages' }}
@@ -191,8 +120,19 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProperties.map(p => <PropertyPreviewCard key={p.id} p={p} />)}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ minHeight: '380px' }}>
+            {featuredProperties.map(p => (
+              <div key={p.id} style={{ minHeight: '380px' }}>
+                <DestinationCard
+                  imageUrl="/card-bg-1.jpg"
+                  imageAlt={p.name}
+                  title={p.name}
+                  stats={`${p.zone === 'north' ? 'North Zone' : 'South Zone'} · ${p.location} · Rs.${p.pricePerNight?.toLocaleString()}/night`}
+                  href={`#/stays/${p.id}`}
+                  themeColor="0 0% 6%"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 text-center sm:hidden">
@@ -208,10 +148,21 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-header mb-3">Ready-Made Packages</h2>
-            <p className="section-sub">Curated circuits — just pick, plan, and go</p>
+            <p className="section-sub">Curated circuits - just pick, plan, and go</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {packages.map(pkg => <PackageCard key={pkg.id} pkg={pkg} />)}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ minHeight: '380px' }}>
+            {packages.map(pkg => (
+              <div key={pkg.id} style={{ minHeight: '380px' }}>
+                <DestinationCard
+                  imageUrl="/card-bg-1.jpg"
+                  imageAlt={pkg.name}
+                  title={pkg.name}
+                  stats={`${pkg.duration} Days · Rs.${pkg.estimatedCost.perPerson.toLocaleString()}/person`}
+                  onClick={() => navigate('/plan', { state: { packageId: pkg.id } })}
+                  themeColor="0 0% 6%"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

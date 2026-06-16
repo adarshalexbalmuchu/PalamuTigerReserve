@@ -46,7 +46,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-gray-600 mb-5">
-              Palamu Tiger Reserve — one of India's original Project Tiger reserves since 1973 — spans
+              Palamu Tiger Reserve - one of India's original Project Tiger reserves since 1973 - spans
               {' '}{reserve.totalArea.toLocaleString()} sq km across Jharkhand's Chhotanagpur Plateau. Open {season.open.label}.
             </p>
 
@@ -56,14 +56,14 @@ export default function Footer() {
                 className="flex items-center gap-2 text-sm text-forest-900 hover:text-forest-600 transition-colors"
               >
                 <Phone size={14} className="text-forest-700 flex-shrink-0" />
-                <span>{contacts.helpline.display} — {contacts.helpline.label}</span>
+                <span>{contacts.helpline.display} - {contacts.helpline.label}</span>
               </a>
               <a
                 href={`tel:${contacts.complaints.number}`}
                 className="flex items-center gap-2 text-sm text-forest-900 hover:text-forest-600 transition-colors"
               >
                 <Phone size={14} className="text-forest-700 flex-shrink-0" />
-                <span>{contacts.complaints.display} — {contacts.complaints.label}</span>
+                <span>{contacts.complaints.display} - {contacts.complaints.label}</span>
               </a>
               <p className="flex items-start gap-2 text-sm text-gray-600">
                 <MapPin size={14} className="text-forest-700 flex-shrink-0 mt-0.5" />
