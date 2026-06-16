@@ -38,7 +38,7 @@ export default function Safari() {
       {/* Hero */}
       <div className="bg-forest-900 text-cream py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamau Tiger Reserve</p>
+          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamu Tiger Reserve</p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl mb-3">Safari & Permits</h1>
           <p className="text-forest-300 text-lg font-serif italic mb-6">
             Jeep safaris and elephant safaris through the Betla National Park core area

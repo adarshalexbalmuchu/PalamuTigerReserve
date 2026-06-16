@@ -121,7 +121,7 @@ export default function Stays() {
       {/* Page header */}
       <div className="bg-forest-900 text-cream py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamau Tiger Reserve</p>
+          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamu Tiger Reserve</p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl mb-3">Forest Stays</h1>
           <p className="text-forest-300 text-lg font-serif italic">
             {properties.length} accommodations across North & South Zones — from ₹1,500 to ₹3,000/night

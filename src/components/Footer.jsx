@@ -32,19 +32,21 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-10 h-10 bg-forest-700 rounded-full flex items-center justify-center text-xl">
-                🐯
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img
+                src="/logo-transparent.png"
+                alt="Palamu Tiger Reserve"
+                className="h-12 w-12 object-contain"
+              />
               <div>
                 <p className="text-cream font-serif font-bold text-lg leading-tight">
-                  Palamau Tiger Reserve
+                  Palamu Tiger Reserve
                 </p>
                 <p className="text-forest-400 text-xs tracking-widest uppercase">Official Journey Planner</p>
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-forest-400 mb-5">
-              Palamau Tiger Reserve — one of India's original Project Tiger reserves since 1973 — spans
+              Palamu Tiger Reserve — one of India's original Project Tiger reserves since 1973 — spans
               {' '}{reserve.totalArea.toLocaleString()} sq km across Jharkhand's Chhotanagpur Plateau. Open {season.open.label}.
             </p>
 
@@ -105,7 +107,7 @@ export default function Footer() {
       <div className="border-t border-forest-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-forest-500 text-center sm:text-left">
-            © {new Date().getFullYear()} Palamau Tiger Reserve | Department of Forest, Environment & Climate Change, Government of Jharkhand.
+            © {new Date().getFullYear()} Palamu Tiger Reserve | Department of Forest, Environment & Climate Change, Government of Jharkhand.
             All rights reserved.
           </p>
           <p className="text-xs text-forest-600">
