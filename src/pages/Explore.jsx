@@ -186,7 +186,7 @@ export default function Explore() {
       {/* Transport section */}
       <section className="bg-white border-t border-earth-100 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif font-bold text-2xl text-forest-800 mb-6">Getting to Palamau Tiger Reserve</h2>
+          <h2 className="font-serif font-bold text-2xl text-forest-800 mb-6">Getting to Palamu Tiger Reserve</h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {[
               {

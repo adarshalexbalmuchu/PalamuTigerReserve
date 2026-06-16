@@ -57,7 +57,7 @@ export default function Header() {
         <div className="bg-palash text-white text-xs py-1.5 px-4 text-center flex items-center justify-center gap-2">
           <AlertTriangle size={13} />
           <span>
-            <strong>Park Closed:</strong> Palamau Tiger Reserve is closed to tourists from July 1 – September 30 annually.
+            <strong>Park Closed:</strong> Palamu Tiger Reserve is closed to tourists from July 1 – September 30 annually.
           </span>
         </div>
       )}
@@ -71,13 +71,13 @@ export default function Header() {
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="Palamau Tiger Reserve Home">
+          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="Palamu Tiger Reserve Home">
             <div className="w-9 h-9 bg-forest-600 rounded-full flex items-center justify-center text-lg shadow-sm">
               🐯
             </div>
             <div className="leading-none">
               <p className="text-cream font-serif font-bold text-base tracking-tight leading-tight">
-                Palamau Tiger Reserve
+                Palamu Tiger Reserve
               </p>
               <p className="text-forest-300 text-[10px] font-medium tracking-widest uppercase leading-tight">
                 Official Journey Planner

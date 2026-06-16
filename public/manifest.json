@@ -1,7 +1,7 @@
 {
-  "name": "Palamau Tiger Reserve – Journey Planner",
+  "name": "Palamu Tiger Reserve – Journey Planner",
   "short_name": "PTR Planner",
-  "description": "Official travel planner for Palamau Tiger Reserve, Jharkhand. Book stays, plan safaris, and explore PTR.",
+  "description": "Official travel planner for Palamu Tiger Reserve, Jharkhand. Book stays, plan safaris, and explore PTR.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f8f4ef",

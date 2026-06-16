@@ -42,7 +42,7 @@ export default function MapView({ height = '500px', showSites = true, showProper
       zoom={9}
       style={{ height, width: '100%' }}
       zoomControl={false}
-      aria-label="Interactive map of Palamau Tiger Reserve"
+      aria-label="Interactive map of Palamu Tiger Reserve"
     >
       <ZoomControl position="bottomright" />
 

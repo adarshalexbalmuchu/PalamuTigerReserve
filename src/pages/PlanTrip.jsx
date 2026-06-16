@@ -138,7 +138,7 @@ function TripReport({ itinerary, totalCost, includes, groupSize, title }) {
         <div className="flex items-start justify-between">
           <div>
             <div className="text-forest-400 text-xs uppercase tracking-widest mb-1">
-              Government of Jharkhand | Palamau Tiger Reserve
+              Government of Jharkhand | Palamu Tiger Reserve
             </div>
             <h2 className="font-serif font-bold text-2xl">{title}</h2>
             <div className="flex flex-wrap gap-3 mt-2 text-sm text-forest-300">

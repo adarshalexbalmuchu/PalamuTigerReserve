@@ -1,7 +1,7 @@
-// All data for Palamau Tiger Reserve – sourced from official documentation
+// All data for Palamu Tiger Reserve – sourced from official documentation
 
 export const reserve = {
-  name: 'Palamau Tiger Reserve',
+  name: 'Palamu Tiger Reserve',
   shortName: 'PTR',
   tagline: 'Where Ancient Forests Meet Living History',
   established: '1973–1974',
@@ -33,7 +33,7 @@ export const season = {
 export const contacts = {
   helpline:     { number: '+918987796001', display: '+91 89877 96001', label: 'Booking Helpline' },
   complaints:   { number: '+919155576369', display: '+91 91555 76369', label: 'Grievances & Complaints' },
-  deputyDirector: { name: 'Prajeshkant Jena IFS', title: 'Deputy Director, Palamau Tiger Reserve' },
+  deputyDirector: { name: 'Prajeshkant Jena IFS', title: 'Deputy Director, Palamu Tiger Reserve' },
 }
 
 export const checkInRules = {
@@ -532,7 +532,7 @@ export const wildlife = [
 
 export const flora = [
   { name: 'Sal', scientific: 'Shorea robusta', role: 'Dominant canopy species', description: 'The majestic Sal tree reigns supreme as the primary canopy species of PTR, forming vast, cathedral-like forests.' },
-  { name: 'Palash', scientific: 'Butea monosperma', role: 'Signature flowering tree', description: 'The flame of the forest, blooming in vivid red-orange—so integral to the landscape that local lore gives it a share of the name "Palamau."' },
+  { name: 'Palash', scientific: 'Butea monosperma', role: 'Signature flowering tree', description: 'The flame of the forest, blooming in vivid red-orange—so integral to the landscape that local lore gives it a share of the name "Palamu."' },
   { name: 'Mahua', scientific: 'Madhuca indica', role: 'Tribal livelihood tree', description: 'Deeply significant to local tribal communities. Its flowers are used to make a traditional drink and its seeds for cooking oil.' },
   { name: 'Kendu', scientific: 'Diospyros melanoxylon', role: 'Forest economy species', description: 'Kendu leaves are central to the local economy, used as wrappers for traditional bidis.' },
   { name: 'Bamboo', scientific: 'Dendrocalamus strictus', role: 'Understorey species', description: 'Extensive bamboo groves provide critical habitat for many species and serve as elephant food corridors.' },
@@ -546,7 +546,7 @@ export const medicinalPlants = [
 ]
 
 export const heritage = {
-  palamauForts: {
+  palamuForts: {
     oldFort: {
       features: ['25-foot-high ramparts', '7-foot-thick walls', 'Deep well (still intact)', 'Triple-domed brick mosque', 'Mughal meenakari stonework', 'Arabesque designs', 'Persian and Devanagari scripts'],
       location: 'Plains within Betla National Park, overlooking the Auranga River',

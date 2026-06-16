@@ -197,7 +197,7 @@ export default function Home() {
             </div>
 
             <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
-              Palamau
+              Palamu
               <br />
               <span className="text-gold">Tiger Reserve</span>
             </h1>
@@ -264,7 +264,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-header mb-3">Plan Your PTR Journey</h2>
-            <p className="section-sub">Choose how you'd like to explore Palamau Tiger Reserve</p>
+            <p className="section-sub">Choose how you'd like to explore Palamu Tiger Reserve</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

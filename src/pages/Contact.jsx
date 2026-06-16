@@ -66,7 +66,7 @@ export default function Contact() {
                 Office Address
               </h2>
               <div className="space-y-3 text-sm text-earth-700">
-                <p className="font-semibold text-forest-800">Palamau Tiger Reserve</p>
+                <p className="font-semibold text-forest-800">Palamu Tiger Reserve</p>
                 <p>Deputy Director's Office</p>
                 <p>Betla, Latehar District</p>
                 <p>Jharkhand – 829 206, India</p>

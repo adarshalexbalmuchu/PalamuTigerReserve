@@ -49,7 +49,7 @@ export default function About() {
           🌿
         </div>
         <div className="relative max-w-7xl mx-auto">
-          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamau Tiger Reserve</p>
+          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamu Tiger Reserve</p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl mb-4">About PTR</h1>
           <p className="text-forest-300 text-xl font-serif italic max-w-2xl">
             One of India's original nine Project Tiger reserves — a landscape of ecological wonder,
@@ -84,7 +84,7 @@ export default function About() {
         <section>
           <h2 id="heritage" className="font-serif font-bold text-3xl text-forest-800 mb-2">Conservation History</h2>
           <p className="text-earth-600 text-base mb-8">
-            Palamau Tiger Reserve holds a unique place in the history of global wildlife management.
+            Palamu Tiger Reserve holds a unique place in the history of global wildlife management.
             In 1932, this very forest witnessed the world's first-ever scientific tiger census.
           </p>
           <div className="max-w-2xl">
@@ -193,7 +193,7 @@ export default function About() {
         <section>
           <h2 className="font-serif font-bold text-3xl text-forest-800 mb-2">Flora of PTR</h2>
           <p className="text-earth-600 mb-6">
-            The name "Palamau" itself is theorized to be an amalgamation of local floral terms—'Pa' for Palash—
+            The name "Palamu" itself is theorized to be an amalgamation of local floral terms—'Pa' for Palash—
             indicating the deep cultural integration of the forest's botany.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -245,14 +245,14 @@ export default function About() {
           <h2 className="font-serif font-bold text-3xl text-forest-800 mb-2">The Palamu Forts – Chero Dynasty</h2>
           <p className="text-earth-600 mb-6">
             Deep within Betla National Park, overlooking the Auranga River, lie the magnificent ruins of the
-            Palamu Forts — testament to the {heritage.palamauForts.dynasty}'s turbulent history.
+            Palamu Forts — testament to the {heritage.palamuForts.dynasty}'s turbulent history.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border border-earth-200 rounded-2xl p-6">
               <h3 className="font-serif font-bold text-xl text-forest-800 mb-1">Old Fort</h3>
-              <p className="text-xs text-earth-500 mb-3">{heritage.palamauForts.oldFort.location}</p>
+              <p className="text-xs text-earth-500 mb-3">{heritage.palamuForts.oldFort.location}</p>
               <ul className="space-y-2">
-                {heritage.palamauForts.oldFort.features.map(f => (
+                {heritage.palamuForts.oldFort.features.map(f => (
                   <li key={f} className="flex items-start gap-2 text-sm text-earth-700">
                     <span className="text-gold mt-1 flex-shrink-0">◆</span>
                     {f}
@@ -262,9 +262,9 @@ export default function About() {
             </div>
             <div className="bg-white border border-earth-200 rounded-2xl p-6">
               <h3 className="font-serif font-bold text-xl text-forest-800 mb-1">New Fort</h3>
-              <p className="text-xs text-earth-500 mb-3">{heritage.palamauForts.newFort.location}</p>
+              <p className="text-xs text-earth-500 mb-3">{heritage.palamuForts.newFort.location}</p>
               <ul className="space-y-2 mb-4">
-                {heritage.palamauForts.newFort.features.map(f => (
+                {heritage.palamuForts.newFort.features.map(f => (
                   <li key={f} className="flex items-start gap-2 text-sm text-earth-700">
                     <span className="text-gold mt-1 flex-shrink-0">◆</span>
                     {f}
@@ -272,13 +272,13 @@ export default function About() {
                 ))}
               </ul>
               <div className="bg-palash/5 border border-palash/20 rounded-xl p-3 text-xs text-earth-700">
-                <strong className="text-palash">British Siege (1771):</strong> {heritage.palamauForts.britishSiege}. {heritage.palamauForts.event1857}
+                <strong className="text-palash">British Siege (1771):</strong> {heritage.palamuForts.britishSiege}. {heritage.palamuForts.event1857}
               </div>
             </div>
           </div>
 
           <div className="mt-5 bg-earth-50 border border-earth-200 rounded-xl p-4 text-sm text-earth-700">
-            <strong>Key Ruler:</strong> {heritage.palamauForts.keyRuler} — brought unprecedented prosperity to the region.
+            <strong>Key Ruler:</strong> {heritage.palamuForts.keyRuler} — brought unprecedented prosperity to the region.
             Construction inscriptions in Sanskrit were attributed to the king's guru, Banmali Mishra.
           </div>
         </section>
