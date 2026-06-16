@@ -73,9 +73,9 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="Palamu Tiger Reserve Home">
             <img
-              src="/logo-transparent.png"
+              src="/logo.jpg"
               alt="Palamu Tiger Reserve"
-              className="h-10 w-10 object-contain"
+              className="h-10 w-10 rounded-full object-cover shadow-sm flex-shrink-0"
             />
             <div className="leading-none">
               <p className="text-cream font-serif font-bold text-base tracking-tight leading-tight">

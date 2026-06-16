@@ -34,9 +34,9 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img
-                src="/logo-transparent.png"
+                src="/logo.jpg"
                 alt="Palamu Tiger Reserve"
-                className="h-12 w-12 object-contain"
+                className="h-12 w-12 rounded-full object-cover shadow-sm flex-shrink-0"
               />
               <div>
                 <p className="text-cream font-serif font-bold text-lg leading-tight">

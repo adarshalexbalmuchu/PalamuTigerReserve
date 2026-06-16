@@ -27,10 +27,10 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
 
   return (
     <div ref={ref} className="text-center p-6" style={{ animationDelay: `${delay}ms` }}>
-      <div className="text-4xl md:text-5xl font-serif font-bold text-forest-800 mb-1">
+      <div className="text-4xl md:text-5xl font-serif font-bold text-gold mb-1">
         {typeof value === 'number' ? display.toLocaleString() : value}{suffix}
       </div>
-      <div className="text-sm text-earth-600 font-medium mt-1">{label}</div>
+      <div className="text-sm text-forest-300 font-medium mt-1">{label}</div>
     </div>
   )
 }
@@ -38,7 +38,7 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
 function PackageCard({ pkg }) {
   return (
     <div className="card group cursor-pointer">
-      <div className="h-3 bg-gradient-to-r from-forest-700 to-forest-500" />
+      <div className="h-2 bg-gradient-to-r from-gold to-gold-dark" />
       <div className="p-6">
         <div className="flex items-start justify-between mb-3">
           <span className="text-3xl">{pkg.icon}</span>
@@ -131,7 +131,7 @@ export default function Home() {
     <div className="overflow-x-hidden">
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background */}
         <div
           className="absolute inset-0 hero-gradient"
@@ -139,45 +139,54 @@ export default function Home() {
                    backgroundBlendMode: 'multiply' }}
         />
 
-        {/* Floating decorative elements */}
-        <div className="absolute top-20 right-20 text-6xl opacity-5 animate-pulse-slow select-none hidden lg:block">🐯</div>
-        <div className="absolute bottom-32 right-40 text-4xl opacity-5 select-none hidden lg:block">🐘</div>
-        <div className="absolute top-40 left-1/3 text-3xl opacity-5 select-none hidden lg:block">🦅</div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <div className="max-w-3xl">
-            {/* Status badge */}
-            <div className="flex items-center gap-2 mb-8">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                parkOpen
-                  ? 'bg-forest-400/20 text-forest-300 border border-forest-400/30'
-                  : 'bg-palash/20 text-red-300 border border-palash/30'
-              }`}>
-                <span className={`w-2 h-2 rounded-full ${parkOpen ? 'bg-forest-400 animate-pulse' : 'bg-palash'}`} />
-                {parkOpen ? 'Park Open for Visitors' : 'Park Currently Closed (Jul–Sep)'}
-              </span>
-              <span className="text-forest-400 text-xs">Est. 1973 · Project Tiger</span>
+          <div className="flex items-center gap-12">
+            {/* Left column: text content */}
+            <div className="flex-1 max-w-3xl">
+              {/* Status badge */}
+              <div className="flex items-center gap-2 mb-8">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                  parkOpen
+                    ? 'bg-forest-400/20 text-forest-300 border border-forest-400/30'
+                    : 'bg-palash/20 text-red-300 border border-palash/30'
+                }`}>
+                  <span className={`w-2 h-2 rounded-full ${parkOpen ? 'bg-forest-400 animate-pulse' : 'bg-palash'}`} />
+                  {parkOpen ? 'Park Open for Visitors' : 'Park Currently Closed (Jul–Sep)'}
+                </span>
+                <span className="text-forest-400 text-xs">Est. 1973 · Project Tiger</span>
+              </div>
+
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
+                Palamu
+                <br />
+                <span className="text-gold">Tiger Reserve</span>
+              </h1>
+
+              <p className="text-xl text-forest-200 font-serif italic mb-10">
+                Where Ancient Forests Meet Living History
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/plan" className="btn-primary text-base px-8 py-3.5 shadow-gold">
+                  <TreePine size={18} />
+                  Plan My Journey
+                </Link>
+                <Link to="/explore" className="btn-secondary text-base px-8 py-3.5 border-forest-400 text-forest-200 hover:bg-forest-700 hover:text-cream hover:border-forest-700">
+                  <Map size={18} />
+                  Explore the Map
+                </Link>
+              </div>
             </div>
 
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
-              Palamu
-              <br />
-              <span className="text-gold">Tiger Reserve</span>
-            </h1>
-
-            <p className="text-xl text-forest-200 font-serif italic mb-10">
-              Where Ancient Forests Meet Living History
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/plan" className="btn-primary text-base px-8 py-3.5 shadow-gold">
-                <TreePine size={18} />
-                Plan My Journey
-              </Link>
-              <Link to="/explore" className="btn-secondary text-base px-8 py-3.5 border-forest-400 text-forest-200 hover:bg-forest-700 hover:text-cream hover:border-forest-700">
-                <Map size={18} />
-                Explore the Map
-              </Link>
+            {/* Right column: logo (desktop only) */}
+            <div className="hidden lg:flex flex-shrink-0 items-center justify-center">
+              <img
+                src="/logo-transparent.png"
+                alt=""
+                aria-hidden="true"
+                className="w-72 h-72 object-contain"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </div>
           </div>
         </div>
@@ -190,7 +199,7 @@ export default function Home() {
       </section>
 
       {/* ─── STATS ─── */}
-      <section className="bg-white border-y border-earth-100">
+      <section className="bg-forest-950 border-y border-forest-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 divide-x-0 md:divide-x divide-earth-100">
             <AnimatedStat value={1129.93} suffix=" sq km" label="Total Reserve Area" delay={0} />
@@ -217,7 +226,6 @@ export default function Home() {
                 <div className="w-14 h-14 bg-forest-100 text-forest-700 rounded-2xl flex items-center justify-center text-2xl mb-5">
                   📋
                 </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-palash mb-2">Mode A</div>
                 <h3 className="font-serif font-bold text-2xl text-forest-800 mb-3">Browse Packages</h3>
                 <p className="text-earth-600 text-sm leading-relaxed mb-6">
                   Choose from our curated circuits — from the Classic Betla Weekend to the Wolf & Wilderness
@@ -236,7 +244,6 @@ export default function Home() {
                 <div className="w-14 h-14 bg-gold/10 text-earth-700 rounded-2xl flex items-center justify-center text-2xl mb-5">
                   🗺️
                 </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-gold-dark mb-2">Mode B</div>
                 <h3 className="font-serif font-bold text-2xl text-forest-800 mb-3">Build My Own Trip</h3>
                 <p className="text-earth-600 text-sm leading-relaxed mb-6">
                   Select your preferred properties, set your budget and group size, and let our planner
