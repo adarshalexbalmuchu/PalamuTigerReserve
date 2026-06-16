@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Phone, ArrowRight } from 'lucide-react'
-import { reserve, packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
+import { packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
 
 function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
   const [display, setDisplay] = useState(0)
@@ -27,10 +27,10 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
 
   return (
     <div ref={ref} className="text-center p-6" style={{ animationDelay: `${delay}ms` }}>
-      <div className="text-4xl md:text-5xl font-serif font-bold text-gold mb-1">
+      <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-1">
         {typeof value === 'number' ? display.toLocaleString() : value}{suffix}
       </div>
-      <div className="text-sm text-forest-300 font-medium mt-1">{label}</div>
+      <div className="text-sm text-neutral-400 font-medium mt-1">{label}</div>
     </div>
   )
 }
@@ -38,27 +38,27 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
 function PackageCard({ pkg }) {
   return (
     <div className="card group cursor-pointer">
-      <div className="h-1 bg-gold" />
+      <div className="h-1 bg-black" />
       <div className="p-6">
         <div className="flex items-start justify-between mb-3">
           <span className="text-3xl">{pkg.icon}</span>
-          <span className="text-xs bg-gold/10 text-earth-700 font-semibold px-2.5 py-1 rounded-full border border-gold/30">
+          <span className="text-xs bg-neutral-100 text-neutral-700 font-semibold px-2.5 py-1 rounded-full border border-neutral-200">
             {pkg.duration} Days
           </span>
         </div>
-        <h3 className="font-serif font-bold text-xl text-forest-800 mb-1">{pkg.name}</h3>
-        <p className="text-sm text-palash font-medium mb-4">{pkg.subtitle}</p>
-        <div className="flex items-center justify-between pt-4 border-t border-earth-100">
+        <h3 className="font-serif font-bold text-xl text-black mb-1">{pkg.name}</h3>
+        <p className="text-sm text-neutral-500 font-medium mb-4">{pkg.subtitle}</p>
+        <div className="flex items-center justify-between pt-4 border-t border-neutral-100">
           <div>
-            <div className="text-lg font-bold text-forest-800">
+            <div className="text-lg font-bold text-black">
               ₹{(pkg.estimatedCost.perPerson).toLocaleString()}
             </div>
-            <div className="text-xs text-earth-500">per person (2 pax)</div>
+            <div className="text-xs text-neutral-500">per person (2 pax)</div>
           </div>
           <Link
             to="/plan"
             state={{ packageId: pkg.id }}
-            className="flex items-center gap-1.5 text-sm font-semibold text-forest-700 group-hover:text-palash transition-colors"
+            className="flex items-center gap-1.5 text-sm font-semibold text-neutral-700 group-hover:text-black transition-colors"
           >
             View Itinerary <ArrowRight size={15} />
           </Link>
@@ -78,17 +78,13 @@ function PropertyPreviewCard({ p }) {
 
   return (
     <Link to={`/stays/${p.id}`} className="card group block">
-      <div className={`h-1 ${p.zone === 'north' ? 'bg-forest-600' : 'bg-earth-600'}`} />
+      <div className="h-1 bg-black" />
       <div className="p-5">
-        <span className={`inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-3 ${
-          p.zone === 'north'
-            ? 'bg-forest-100 text-forest-700'
-            : 'bg-earth-100 text-earth-700'
-        }`}>
+        <span className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-3 bg-neutral-100 text-neutral-700">
           {p.zone === 'north' ? 'North Zone' : 'South Zone'}
         </span>
-        <h3 className="font-serif font-bold text-lg text-forest-800 mb-0.5">{p.name}</h3>
-        <p className="text-xs text-earth-500 mb-3">{p.location}</p>
+        <h3 className="font-serif font-bold text-lg text-black mb-0.5">{p.name}</h3>
+        <p className="text-xs text-neutral-500 mb-3">{p.location}</p>
         <div className="flex flex-wrap gap-1 mb-4">
           {amenityList.slice(0, 3).map(a => (
             <span key={a} className="amenity-chip">{a}</span>
@@ -101,10 +97,10 @@ function PropertyPreviewCard({ p }) {
         </div>
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xl font-bold text-forest-800">₹{p.pricePerNight?.toLocaleString()}</span>
-            <span className="text-xs text-earth-500"> /night</span>
+            <span className="text-xl font-bold text-black">₹{p.pricePerNight?.toLocaleString()}</span>
+            <span className="text-xs text-neutral-500"> /night</span>
           </div>
-          <span className="text-sm font-semibold text-forest-600 group-hover:text-palash transition-colors flex items-center gap-1">
+          <span className="text-sm font-semibold text-neutral-600 group-hover:text-black transition-colors flex items-center gap-1">
             View <ChevronRight size={15} />
           </span>
         </div>
@@ -114,7 +110,6 @@ function PropertyPreviewCard({ p }) {
 }
 
 export default function Home() {
-  const parkOpen = isSeasonOpen()
   const featuredProperties = properties.filter(p => ['new-tree-house-betla', 'kechki-beach-cottage', 'netarhat-new-cottage'].includes(p.id))
 
   return (
@@ -122,7 +117,6 @@ export default function Home() {
 
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background video */}
         <video
           className="absolute top-1/2 left-1/2 object-cover"
           style={{
@@ -138,13 +132,11 @@ export default function Home() {
           loop
           playsInline
         />
-        {/* Dark overlay so text stays readable */}
-        <div className="absolute inset-0 bg-forest-950/65" />
-
+        <div className="absolute inset-0 bg-black/50" />
       </section>
 
       {/* ─── STATS BAR ─── */}
-      <section className="bg-forest-950 border-y border-forest-800">
+      <section className="bg-black border-y border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4">
             <AnimatedStat value={1129.93} suffix=" sq km" label="Total Reserve Area" delay={0} />
@@ -164,30 +156,28 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Packages */}
-            <Link to="/plan" state={{ mode: 'packages' }} className="group block border-l-4 border-forest-600 bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
-              <span className="inline-block text-xs font-bold uppercase tracking-wider text-forest-600 bg-forest-50 px-2.5 py-1 rounded mb-4">
+            <Link to="/plan" state={{ mode: 'packages' }} className="group block border-l-4 border-black bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-black bg-neutral-100 px-2.5 py-1 rounded mb-4">
                 Packages
               </span>
-              <h3 className="font-serif font-bold text-2xl text-forest-800 mb-2">Browse Packages</h3>
-              <p className="text-earth-600 text-sm mb-6">
+              <h3 className="font-serif font-bold text-2xl text-black mb-2">Browse Packages</h3>
+              <p className="text-neutral-600 text-sm mb-6">
                 Pre-built itineraries with all logistics handled — from the Classic Betla Weekend to the Wolf &amp; Wilderness 5-day adventure.
               </p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest-700 group-hover:text-palash transition-colors">
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-700 group-hover:text-black transition-colors">
                 Browse {packages.length} Packages <ArrowRight size={15} />
               </span>
             </Link>
 
-            {/* Custom */}
-            <Link to="/plan" state={{ mode: 'custom' }} className="group block border-l-4 border-gold bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
-              <span className="inline-block text-xs font-bold uppercase tracking-wider text-earth-700 bg-gold/10 px-2.5 py-1 rounded mb-4">
+            <Link to="/plan" state={{ mode: 'custom' }} className="group block border-l-4 border-neutral-400 bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded mb-4">
                 Custom
               </span>
-              <h3 className="font-serif font-bold text-2xl text-forest-800 mb-2">Build My Own Trip</h3>
-              <p className="text-earth-600 text-sm mb-6">
+              <h3 className="font-serif font-bold text-2xl text-black mb-2">Build My Own Trip</h3>
+              <p className="text-neutral-600 text-sm mb-6">
                 Select properties, set your budget and group size, and auto-generate a day-by-day itinerary with commutation contacts.
               </p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-earth-700 group-hover:text-palash transition-colors">
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-700 group-hover:text-black transition-colors">
                 Start Custom Builder <ArrowRight size={15} />
               </span>
             </Link>
@@ -203,7 +193,7 @@ export default function Home() {
               <h2 className="section-header mb-2">Featured Stays</h2>
               <p className="section-sub">From riverside glamping tents to hilltop pine forest cottages</p>
             </div>
-            <Link to="/stays" className="hidden sm:flex items-center gap-1 text-sm font-semibold text-forest-600 hover:text-palash transition-colors">
+            <Link to="/stays" className="hidden sm:flex items-center gap-1 text-sm font-semibold text-neutral-700 hover:text-black transition-colors">
               View all {properties.length} properties <ChevronRight size={15} />
             </Link>
           </div>
@@ -221,7 +211,7 @@ export default function Home() {
       </section>
 
       {/* ─── PACKAGES ─── */}
-      <section className="py-24 bg-cream section-divider">
+      <section className="py-24 bg-neutral-50 section-divider">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-header mb-3">Ready-Made Packages</h2>
@@ -234,13 +224,13 @@ export default function Home() {
       </section>
 
       {/* ─── IMPORTANT INFO ─── */}
-      <section className="py-16 bg-forest-800">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
 
             {/* Check-in times */}
             <div>
-              <h3 className="font-serif font-bold text-xl text-cream mb-6">4:00 PM Arrival Mandate</h3>
+              <h3 className="font-serif font-bold text-xl text-white mb-6">4:00 PM Arrival Mandate</h3>
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: 'Check-in', value: '1:00 PM' },
@@ -248,9 +238,9 @@ export default function Home() {
                   { label: 'Arrival Deadline', value: '4:00 PM' },
                   { label: 'ID Proof', value: 'Mandatory' },
                 ].map(({ label, value }) => (
-                  <div key={label} className="bg-forest-700 rounded-lg p-4">
-                    <div className="text-xs text-forest-300 font-medium mb-1">{label}</div>
-                    <div className="font-bold text-cream">{value}</div>
+                  <div key={label} className="bg-neutral-900 rounded-lg p-4">
+                    <div className="text-xs text-neutral-400 font-medium mb-1">{label}</div>
+                    <div className="font-bold text-white">{value}</div>
                   </div>
                 ))}
               </div>
@@ -258,27 +248,27 @@ export default function Home() {
 
             {/* Contact links */}
             <div>
-              <h3 className="font-serif font-bold text-xl text-cream mb-6">Get in Touch</h3>
+              <h3 className="font-serif font-bold text-xl text-white mb-6">Get in Touch</h3>
               <div className="space-y-3">
                 <a
                   href={`tel:${contacts.helpline.number}`}
-                  className="flex items-center justify-between bg-forest-700 hover:bg-forest-600 rounded-lg p-4 transition-colors group"
+                  className="flex items-center justify-between bg-neutral-900 hover:bg-neutral-800 rounded-lg p-4 transition-colors group"
                 >
                   <div>
-                    <div className="text-xs text-forest-300 font-medium">{contacts.helpline.label}</div>
-                    <div className="font-bold text-gold text-lg">{contacts.helpline.display}</div>
+                    <div className="text-xs text-neutral-400 font-medium">{contacts.helpline.label}</div>
+                    <div className="font-bold text-white text-lg">{contacts.helpline.display}</div>
                   </div>
-                  <Phone size={18} className="text-gold group-hover:scale-110 transition-transform" />
+                  <Phone size={18} className="text-white group-hover:scale-110 transition-transform" />
                 </a>
                 <a
                   href={`tel:${contacts.complaints.number}`}
-                  className="flex items-center justify-between bg-forest-700 hover:bg-forest-600 rounded-lg p-4 transition-colors group"
+                  className="flex items-center justify-between bg-neutral-900 hover:bg-neutral-800 rounded-lg p-4 transition-colors group"
                 >
                   <div>
-                    <div className="text-xs text-forest-300 font-medium">{contacts.complaints.label}</div>
-                    <div className="font-bold text-forest-200 text-lg">{contacts.complaints.display}</div>
+                    <div className="text-xs text-neutral-400 font-medium">{contacts.complaints.label}</div>
+                    <div className="font-bold text-neutral-200 text-lg">{contacts.complaints.display}</div>
                   </div>
-                  <Phone size={18} className="text-forest-300 group-hover:scale-110 transition-transform" />
+                  <Phone size={18} className="text-neutral-400 group-hover:scale-110 transition-transform" />
                 </a>
               </div>
             </div>

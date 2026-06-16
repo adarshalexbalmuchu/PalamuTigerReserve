@@ -20,12 +20,10 @@ export default function Header() {
 
   useEffect(() => { setMenuOpen(false) }, [location.pathname])
 
-  const headerBase = 'bg-white shadow-sm border-b border-gray-100'
-
   return (
     <>
       {/* Government top bar */}
-      <div className="bg-black text-gray-300 text-xs py-1.5 px-4">
+      <div className="bg-black text-neutral-300 text-xs py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <span className="hidden sm:block">
             Government of Jharkhand | Department of Forest, Environment &amp; Climate Change
@@ -33,7 +31,7 @@ export default function Header() {
           <span className="sm:hidden">Govt. of Jharkhand – Forest Dept.</span>
           <a
             href={`tel:${contacts.helpline.number}`}
-            className="flex items-center gap-1.5 hover:text-gold transition-colors"
+            className="flex items-center gap-1.5 hover:text-white transition-colors"
             aria-label="Call booking helpline"
           >
             <Phone size={11} />
@@ -53,9 +51,7 @@ export default function Header() {
       )}
 
       {/* Main nav */}
-      <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${headerBase}`}
-      >
+      <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-neutral-200">
         <nav
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
           aria-label="Main navigation"
@@ -68,10 +64,10 @@ export default function Header() {
               className="h-10 w-10 rounded-full object-cover shadow-sm flex-shrink-0"
             />
             <div className="leading-none">
-              <p className="text-forest-900 font-serif font-bold text-base tracking-tight leading-tight">
+              <p className="text-black font-serif font-bold text-base tracking-tight leading-tight">
                 Palamu Tiger Reserve
               </p>
-              <p className="text-forest-600 text-[10px] font-medium tracking-widest uppercase leading-tight">
+              <p className="text-neutral-500 text-[10px] font-medium tracking-widest uppercase leading-tight">
                 Official Journey Planner
               </p>
             </div>
@@ -86,9 +82,7 @@ export default function Header() {
                 end={to === '/'}
                 className={({ isActive }) =>
                   `text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? 'text-forest-700'
-                      : 'text-forest-900 hover:text-forest-600'
+                    isActive ? 'text-black' : 'text-neutral-600 hover:text-black'
                   }`
                 }
               >
@@ -99,13 +93,13 @@ export default function Header() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
-            <Link to="/plan" className="hidden sm:inline-flex items-center gap-1.5 bg-forest-800 text-white font-semibold text-sm px-4 py-2 rounded-lg hover:bg-forest-700 transition-colors shadow-sm">
+            <Link to="/plan" className="hidden sm:inline-flex items-center gap-1.5 bg-black text-white font-semibold text-sm px-4 py-2 rounded-lg hover:bg-neutral-800 transition-colors shadow-sm">
               <TreePine size={15} />
               Plan My Trip
             </Link>
 
             <button
-              className="lg:hidden p-2 rounded-lg text-forest-800 hover:text-forest-600 hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-black hover:bg-neutral-100 transition-colors"
               onClick={() => setMenuOpen(v => !v)}
               aria-expanded={menuOpen}
               aria-label="Toggle navigation menu"
@@ -117,7 +111,7 @@ export default function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 px-4 pb-4">
+          <div className="lg:hidden bg-white border-t border-neutral-100 px-4 pb-4">
             <div className="flex flex-col gap-1 pt-2">
               {navItems.map(({ to, label }) => (
                 <NavLink
@@ -127,18 +121,15 @@ export default function Header() {
                   className={({ isActive }) =>
                     `px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       isActive
-                        ? 'bg-forest-50 text-forest-700'
-                        : 'text-forest-900 hover:bg-gray-50 hover:text-forest-700'
+                        ? 'bg-neutral-100 text-black'
+                        : 'text-neutral-700 hover:bg-neutral-50 hover:text-black'
                     }`
                   }
                 >
                   {label}
                 </NavLink>
               ))}
-              <Link
-                to="/plan"
-                className="mt-2 btn-primary justify-center text-sm py-2.5 bg-forest-800 hover:bg-forest-700"
-              >
+              <Link to="/plan" className="mt-2 btn-primary justify-center text-sm py-2.5">
                 <TreePine size={15} />
                 Plan My Trip
               </Link>
