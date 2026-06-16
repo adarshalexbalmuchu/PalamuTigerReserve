@@ -14,7 +14,15 @@ import Contact from './pages/Contact.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  useEffect(() => {
+    // Disable browser scroll restoration so it can't override our scroll
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = 'manual'
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [pathname])
   return null
 }
 

@@ -1,7 +1,7 @@
 import { useState, lazy, Suspense } from 'react'
-import { MapPin, Filter, Plane, Train, Car } from 'lucide-react'
+import { Plane, Train, Car } from 'lucide-react'
 import { visitSites, properties } from '../data/ptr-data.js'
-import { Link } from 'react-router-dom'
+import DestinationCard from '../components/DestinationCard.jsx'
 
 const MapView = lazy(() => import('../components/MapView.jsx'))
 
@@ -21,41 +21,6 @@ const MAP_LEGEND = [
   { color: '#059669', label: 'Scenic' },
 ]
 
-function SiteCard({ site }) {
-  const typeColors = {
-    waterfall: 'bg-blue-50 border-blue-200 text-blue-700',
-    heritage:  'bg-neutral-100 border-neutral-300 text-neutral-700',
-    wildlife:  'bg-amber-50 border-amber-200 text-amber-700',
-    scenic:    'bg-neutral-50 border-neutral-200 text-neutral-600',
-  }
-  return (
-    <div className="bg-white border border-neutral-100 rounded-2xl p-5 hover:shadow-nature transition-shadow">
-      <div className="mb-3">
-        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${typeColors[site.type] || 'bg-neutral-50 border-neutral-200 text-neutral-600'}`}>
-          {site.type}
-        </span>
-        <h3 className="font-serif font-bold text-neutral-800 mt-2 leading-tight">{site.name}</h3>
-        <p className="text-xs text-neutral-500">{site.subtitle}</p>
-      </div>
-      <p className="text-sm text-neutral-700 leading-relaxed line-clamp-3 mb-3">{site.description}</p>
-      <div className="flex flex-wrap gap-1.5 text-xs mb-3">
-        <span className="bg-neutral-50 text-neutral-600 border border-neutral-200 px-2 py-1 rounded-full">Best time: {site.bestTime}</span>
-        {site.distanceFromBetla && (
-          <span className="bg-neutral-50 text-neutral-600 border border-neutral-200 px-2 py-1 rounded-full">{site.distanceFromBetla} from Betla</span>
-        )}
-      </div>
-      {site.highlights && (
-        <div className="border-t border-neutral-100 pt-3">
-          <div className="flex flex-wrap gap-1">
-            {site.highlights.slice(0, 3).map(h => (
-              <span key={h} className="text-[10px] bg-neutral-50 border border-neutral-200 text-neutral-600 px-2 py-0.5 rounded-full">{h}</span>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
 
 export default function Explore() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -79,7 +44,7 @@ export default function Explore() {
       </div>
 
       {/* Map Section */}
-      <section className="bg-white border-b border-neutral-100">
+      <section id="interactive-map" className="bg-white border-b border-neutral-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <h2 className="font-serif font-bold text-xl text-neutral-800">
@@ -150,27 +115,41 @@ export default function Explore() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredSites.map(s => <SiteCard key={s.id} site={s} />)}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredSites.map(s => (
+            <div key={s.id} style={{ minHeight: '380px' }}>
+              <DestinationCard
+                imageUrl={s.imageUrl || '/card-bg-1.jpg'}
+                imageAlt={s.name}
+                title={s.name}
+                stats={`${s.subtitle}${s.distanceFromBetla ? ` · ${s.distanceFromBetla} from Betla` : ''}`}
+                onClick={() => document.getElementById('interactive-map')?.scrollIntoView({ behavior: 'smooth' })}
+                themeColor="0 0% 6%"
+                ctaLabel="View on Map"
+              />
+            </div>
+          ))}
         </div>
 
         {(activeCategory === 'all' || activeCategory === 'stay') && (
-          <div className="mt-8">
-            <h3 className="font-serif font-bold text-xl text-neutral-800 mb-4">
+          <div className="mt-12">
+            <h3 className="font-serif font-bold text-xl text-neutral-800 mb-6">
               All Forest Accommodations ({properties.length})
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {properties.map(p => (
-                <Link key={p.id} to={`/stays/${p.id}`} className="bg-white border border-neutral-100 rounded-xl p-4 hover:shadow-nature transition-shadow group">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${p.zone === 'north' ? 'bg-neutral-100 text-neutral-700' : 'bg-neutral-100 text-neutral-700'}`}>
-                      {p.zone === 'north' ? 'North' : 'South'}
-                    </span>
-                  </div>
-                  <h4 className="font-semibold text-neutral-800 text-sm group-hover:text-black transition-colors">{p.name}</h4>
-                  <p className="text-xs text-neutral-500 mt-0.5 mb-2">{p.location}</p>
-                  <p className="font-bold text-neutral-800 text-sm">₹{p.pricePerNight?.toLocaleString()}/night</p>
-                </Link>
+                <div key={p.id} style={{ minHeight: '340px' }}>
+                  <DestinationCard
+                    imageUrl={p.imageUrl || '/card-bg-1.jpg'}
+                    imageAlt={p.name}
+                    title={p.name}
+                    stats={`${p.zone === 'north' ? 'North Zone' : 'South Zone'} · ${p.location.split(',')[0]} · ₹${(p.pricePerNight || p.priceMin)?.toLocaleString()}/night`}
+                    href={`#/stays/${p.id}`}
+                    themeColor="0 0% 6%"
+                    ctaLabel="View Details"
+                    minHeight="340px"
+                  />
+                </div>
               ))}
             </div>
           </div>
