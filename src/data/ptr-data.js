@@ -111,7 +111,7 @@ export const properties = [
     contactName: 'Kechki Control Room',
     contactNumber: '+918987796001',
     image: 'cottage',
-    imageUrl: 'https://i.postimg.cc/ZYrxjPPJ/61200203-Kechki-Sangam-Latehar2.jpg',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'kechki-beach-tent',
@@ -155,7 +155,7 @@ export const properties = [
     contactName: 'Betla Control Room',
     contactNumber: '+918987796001',
     image: 'complex',
-    imageUrl: 'https://i.postimg.cc/VL8DcZsY/images-(3).jpg',
+    imageUrl: 'https://i.postimg.cc/BnJY2YRB/EUb3s7i-U0AA0u-DA.jpg',
   },
   {
     id: 'frh-barwadih',
@@ -176,7 +176,7 @@ export const properties = [
     contactName: 'Barwadih Forest Range',
     contactNumber: '+918987796001',
     image: 'frh',
-    imageUrl: 'https://i.postimg.cc/fRkX4Y96/images-(4).jpg',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'netarhat-new-cottage',
@@ -218,7 +218,7 @@ export const properties = [
     contactName: 'Aksi Range Office',
     contactNumber: '+918987796001',
     image: 'treehouse',
-    imageUrl: 'https://i.postimg.cc/5tx3FXY7/images-(1).jpg',
+    imageUrl: 'https://i.postimg.cc/Sx95GYKC/030523064420-1124f8adaa1aef8b20dc41ddaf64e82d.jpg',
   },
   {
     id: 'maromar-frh',
@@ -239,7 +239,7 @@ export const properties = [
     contactName: 'Maromar FRH',
     contactNumber: '+918987796001',
     image: 'frh',
-    imageUrl: 'https://i.postimg.cc/zD94HkJP/images-(2).jpg',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'rud-frh',
@@ -314,7 +314,7 @@ export const visitSites = [
     entryRules: 'No entry fee. Guide recommended for trail safety.',
     highlights: ['468-foot drop', 'Post-monsoon peak flow', 'Forest trek to viewpoint', 'Photography hotspot'],
     distanceFromBetla: '95 km south',
-    imageUrl: 'https://i.postimg.cc/jd127mWd/lodh-waterfalls-ranchi-jharkhand-3-attr-hero.jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Lodh_Falls.jpg',
   },
   {
     id: 'sugabandh-waterfall',
@@ -329,7 +329,7 @@ export const visitSites = [
     entryRules: 'No entry fee.',
     highlights: ['Wooden viewpoints on river rocks', '80-foot cascade', 'En route to Netarhat', 'Photography-friendly'],
     distanceFromBetla: '60 km',
-    imageUrl: 'https://i.postimg.cc/CKGx9Kcg/images-(6).jpg',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Dassam_Falls.jpg',
   },
   {
     id: 'mirchaiya-falls',
@@ -360,7 +360,7 @@ export const visitSites = [
     highlights: ['Only wolf sanctuary in India', '78 active breeding dens', 'Wolves co-exist peacefully with local villages', 'Also: Green Pit Viper, Whip Scorpion'],
     distanceFromBetla: '95 km south',
     coordinates: '23°27′N 84°02′E',
-    imageUrl: 'https://i.postimg.cc/qv9N9S0G/images-(5).jpg',
+    imageUrl: 'https://i.postimg.cc/0y66XPgq/unnamed.jpg',
   },
   {
     id: 'kechki-confluence',
@@ -375,7 +375,7 @@ export const visitSites = [
     entryRules: 'No entry fee. Respect wildlife corridors.',
     highlights: ['Film-famous Sangam', 'Migratory birds', 'River sandbanks', 'Sunset views'],
     distanceFromBetla: '9 km',
-    imageUrl: 'https://i.postimg.cc/ZYrxjPPJ/61200203-Kechki-Sangam-Latehar2.jpg',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'netarhat',
@@ -715,7 +715,7 @@ export const packages = [
     subtitle: '4 Days / 3 Nights',
     duration: 4,
     icon: '🗺️',
-    imageUrl: 'https://i.postimg.cc/ZYrxjPPJ/61200203-Kechki-Sangam-Latehar2.jpg',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
     highlight: 'Most popular multi-property trip',
     description: 'The signature PTR circuit. Move through multiple properties-from Maromar\'s wilderness to the river confluence at Kechki-experiencing safaris, waterfalls, and fort history along the way.',
     estimatedCost: { twoPersons: 22000, perPerson: 11000 },
