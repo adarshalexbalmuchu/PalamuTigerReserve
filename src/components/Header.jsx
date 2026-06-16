@@ -15,22 +15,12 @@ const navItems = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
-  const isHome = location.pathname === '/'
   const parkOpen = isSeasonOpen()
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => { setMenuOpen(false) }, [location.pathname])
 
-  const headerBase = isHome && !scrolled
-    ? 'bg-transparent'
-    : 'bg-forest-900 shadow-lg'
+  const headerBase = 'bg-forest-900 shadow-lg'
 
   return (
     <>
