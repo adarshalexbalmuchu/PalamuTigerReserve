@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <>
       {/* Government top bar */}
-      <div className="bg-forest-800 text-forest-100 text-xs py-1.5 px-4">
+      <div className="bg-black text-gray-300 text-xs py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <span className="hidden sm:block">
             Government of Jharkhand | Department of Forest, Environment &amp; Climate Change
