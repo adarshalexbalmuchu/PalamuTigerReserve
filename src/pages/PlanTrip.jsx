@@ -102,7 +102,6 @@ function TripReport({ itinerary, totalCost, includes, groupSize, title }) {
               <span><Wallet size={12} className="inline mr-1" />Est. ₹{totalCost.toLocaleString()}</span>
             </div>
           </div>
-          <span className="text-4xl">🐯</span>
         </div>
       </div>
 
@@ -539,13 +538,13 @@ export default function PlanTrip() {
             onClick={() => { setMode('packages'); setSelectedPackageId(null) }}
             className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${mode === 'packages' ? 'bg-black text-white shadow-sm' : 'text-neutral-700 hover:text-black'}`}
           >
-            📋 Browse Packages
+            Browse Packages
           </button>
           <button
             onClick={() => { setMode('custom'); setSelectedPackageId(null) }}
             className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${mode === 'custom' ? 'bg-black text-white shadow-sm' : 'text-neutral-700 hover:text-black'}`}
           >
-            🗺️ Build My Own
+            Build My Own
           </button>
         </div>
 
