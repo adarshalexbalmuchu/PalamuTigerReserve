@@ -151,7 +151,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/plan" className="btn-primary text-base px-8 py-3.5 shadow-gold">
+                <Link to="/plan" className="btn-primary text-base px-8 py-3.5 ">
                   <TreePine size={18} />
                   Plan My Journey
                 </Link>
@@ -172,7 +172,6 @@ export default function Home() {
                 alt=""
                 aria-hidden="true"
                 className="w-48 h-48 object-contain opacity-90"
-                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
 

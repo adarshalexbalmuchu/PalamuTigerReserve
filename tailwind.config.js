@@ -44,8 +44,8 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['Cinzel', 'Georgia', 'serif'],
-        sans:  ['Lato', 'system-ui', 'sans-serif'],
+        serif: ['Poppins', 'system-ui', 'sans-serif'],
+        sans:  ['Poppins', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'nature': '0 4px 24px rgba(13, 42, 28, 0.12)',
