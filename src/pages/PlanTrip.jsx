@@ -201,7 +201,7 @@ function TripReport({ itinerary, totalCost, includes, groupSize, title }) {
           <AlertTriangle size={14} /> Critical Reminders
         </h3>
         <ul className="text-xs text-red-700 space-y-1">
-          <li>• Report to PTR reception <strong>before 4:00 PM</strong> on arrival day — no exceptions</li>
+          <li>• Report to PTR reception <strong>before 4:00 PM</strong> on arrival day - no exceptions</li>
           <li>• Carry valid Government-issued photo ID for all group members</li>
           <li>• Park is closed to tourists July 1 – September 30 annually</li>
           <li>• Forest-verified transport contacts are listed for each leg</li>
@@ -552,7 +552,7 @@ function CustomBuilder() {
 
           <div className="bg-forest-50 border border-forest-100 rounded-xl p-4 mb-6 text-sm text-earth-700">
             <strong className="text-forest-800">Auto-included visit sites:</strong> Based on your selected properties,
-            we'll automatically add nearby attractions — Palamu Forts (with Betla stays), Kechki Confluence,
+            we'll automatically add nearby attractions - Palamu Forts (with Betla stays), Kechki Confluence,
             Lodh Falls (with Mahuadanr), Netarhat sunrise views, and more.
           </div>
 
@@ -642,7 +642,7 @@ export default function PlanTrip() {
                   totalCost={selectedPackage.estimatedCost.twoPersons}
                   includes={selectedPackage.includes}
                   groupSize={2}
-                  title={`${selectedPackage.name} — ${selectedPackage.subtitle}`}
+                  title={`${selectedPackage.name} - ${selectedPackage.subtitle}`}
                 />
               </div>
             )}

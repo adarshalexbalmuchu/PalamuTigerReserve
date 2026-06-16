@@ -52,7 +52,7 @@ export default function About() {
           <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamu Tiger Reserve</p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl mb-4">About PTR</h1>
           <p className="text-forest-300 text-xl font-serif italic max-w-2xl">
-            One of India's original nine Project Tiger reserves — a landscape of ecological wonder,
+            One of India's original nine Project Tiger reserves - a landscape of ecological wonder,
             medieval heritage, and conservation history.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function About() {
         <section className="bg-white rounded-2xl border border-earth-200 p-8">
           <h2 className="font-serif font-bold text-2xl text-forest-800 mb-2">Tiger Population Timeline</h2>
           <p className="text-earth-600 text-sm mb-6">
-            PTR's Bengal tiger count — peak of 71 individuals in 1995 — has declined to 1 confirmed individual in 2023.
+            PTR's Bengal tiger count - peak of 71 individuals in 1995 - has declined to 1 confirmed individual in 2023.
             Understanding this story drives our conservation-first approach to eco-tourism.
           </p>
           <div className="space-y-3">
@@ -113,8 +113,8 @@ export default function About() {
           </div>
           <div className="mt-6 bg-forest-50 border border-forest-100 rounded-xl p-4 text-sm text-earth-700">
             <strong className="text-forest-800">Why this matters for your visit:</strong> Our app and itineraries
-            are designed to redirect tourist focus toward PTR's extraordinary biodiversity — elephants, wolves,
-            leopards, 174+ bird species, and the recovering Gaur — ensuring a fulfilling experience regardless
+            are designed to redirect tourist focus toward PTR's extraordinary biodiversity - elephants, wolves,
+            leopards, 174+ bird species, and the recovering Gaur - ensuring a fulfilling experience regardless
             of tiger sightings.
           </div>
         </section>
@@ -163,7 +163,7 @@ export default function About() {
               </p>
               <p className="text-forest-300 leading-relaxed">
                 Remarkably, local villagers in the Mahuadanr valley view the wolf not as a threat, but as a
-                familiar element of their heritage—a rare harmony between rural settlements and apex predators.
+                familiar element of their heritage-a rare harmony between rural settlements and apex predators.
               </p>
             </div>
             <div className="space-y-3">
@@ -193,7 +193,7 @@ export default function About() {
         <section>
           <h2 className="font-serif font-bold text-3xl text-forest-800 mb-2">Flora of PTR</h2>
           <p className="text-earth-600 mb-6">
-            The name "Palamu" itself is theorized to be an amalgamation of local floral terms—'Pa' for Palash—
+            The name "Palamu" itself is theorized to be an amalgamation of local floral terms-'Pa' for Palash-
             indicating the deep cultural integration of the forest's botany.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -245,7 +245,7 @@ export default function About() {
           <h2 className="font-serif font-bold text-3xl text-forest-800 mb-2">The Palamu Forts – Chero Dynasty</h2>
           <p className="text-earth-600 mb-6">
             Deep within Betla National Park, overlooking the Auranga River, lie the magnificent ruins of the
-            Palamu Forts — testament to the {heritage.palamuForts.dynasty}'s turbulent history.
+            Palamu Forts - testament to the {heritage.palamuForts.dynasty}'s turbulent history.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border border-earth-200 rounded-2xl p-6">
@@ -278,7 +278,7 @@ export default function About() {
           </div>
 
           <div className="mt-5 bg-earth-50 border border-earth-200 rounded-xl p-4 text-sm text-earth-700">
-            <strong>Key Ruler:</strong> {heritage.palamuForts.keyRuler} — brought unprecedented prosperity to the region.
+            <strong>Key Ruler:</strong> {heritage.palamuForts.keyRuler} - brought unprecedented prosperity to the region.
             Construction inscriptions in Sanskrit were attributed to the king's guru, Banmali Mishra.
           </div>
         </section>
@@ -291,13 +291,13 @@ export default function About() {
               <h3 className="font-serif font-bold text-xl mb-3 text-gold">The Chhotanagpur Plateau</h3>
               <p className="text-forest-300 text-sm leading-relaxed mb-3">
                 PTR sits within the rugged terrain of the Chhotanagpur Plateau. The topography is highly
-                undulating — altitude ranges from 300 m to 1,140 m above sea level. The geological foundation
+                undulating - altitude ranges from 300 m to 1,140 m above sea level. The geological foundation
                 is ancient gneiss, granite, and limestone.
               </p>
               <p className="text-forest-300 text-sm leading-relaxed">
                 The region suffers from a rain-shadow effect making it notoriously drought-prone. Perennial
                 water sources like the Burha river are crucial focal points for wildlife congregation during
-                the dry season — and key safari sighting zones.
+                the dry season - and key safari sighting zones.
               </p>
             </div>
             <div>
@@ -314,7 +314,7 @@ export default function About() {
                     <span className="text-blue-400 flex-shrink-0">🌊</span>
                     <div>
                       <span className="font-semibold text-cream">{name}</span>
-                      <span className="text-forest-400"> — {desc}</span>
+                      <span className="text-forest-400"> - {desc}</span>
                     </div>
                   </div>
                 ))}

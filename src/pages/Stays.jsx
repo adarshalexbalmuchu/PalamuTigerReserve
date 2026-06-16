@@ -124,7 +124,7 @@ export default function Stays() {
           <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">Palamu Tiger Reserve</p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl mb-3">Forest Stays</h1>
           <p className="text-forest-300 text-lg font-serif italic">
-            {properties.length} accommodations across North & South Zones — from ₹1,500 to ₹3,000/night
+            {properties.length} accommodations across North & South Zones - from ₹1,500 to ₹3,000/night
           </p>
         </div>
       </div>
@@ -254,7 +254,7 @@ export default function Stays() {
           <Info size={16} className="text-amber-600 flex-shrink-0 mt-0.5" />
           <p className="text-earth-700">
             <strong>Check-in 1:00 PM · Check-out 11:00 AM · Must report by 4:00 PM.</strong>{' '}
-            Standard FRH base tariffs cover room only — generator usage billed separately on-site.
+            Standard FRH base tariffs cover room only - generator usage billed separately on-site.
             Valid Govt. ID mandatory at check-in.
           </p>
         </div>
