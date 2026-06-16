@@ -9,52 +9,7 @@ import {
   packages, properties, visitSites, contacts,
   getPropertyById, getVisitSiteById, typeLabels
 } from '../data/ptr-data.js'
-
-// ─── Package cards for Mode A ───────────────────────────────────────────────
-function PackageCard({ pkg, selected, onSelect }) {
-  return (
-    <div
-      className={`card cursor-pointer transition-all duration-200 ${selected ? 'ring-2 ring-forest-600 shadow-nature-lg' : 'hover:shadow-nature'}`}
-      onClick={onSelect}
-    >
-      {selected && (
-        <div className="bg-forest-700 text-cream text-xs font-bold text-center py-1.5 flex items-center justify-center gap-1.5">
-          <CheckCircle size={12} /> Selected
-        </div>
-      )}
-      <div className="h-2 bg-gradient-to-r from-forest-700 to-forest-500" />
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-3">
-          <span className="text-3xl">{pkg.icon}</span>
-          <div className="text-right">
-            <span className="text-xs bg-gold/10 text-earth-700 font-semibold px-2 py-0.5 rounded-full border border-gold/30">
-              {pkg.duration} Days
-            </span>
-          </div>
-        </div>
-        <h3 className="font-serif font-bold text-xl text-forest-800 mb-1">{pkg.name}</h3>
-        <p className="text-xs text-palash font-semibold mb-2">{pkg.highlight}</p>
-        <p className="text-sm text-earth-700 leading-relaxed mb-4 line-clamp-3">{pkg.description}</p>
-
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {pkg.includes.slice(0, 3).map(item => (
-            <span key={item} className="text-[10px] bg-forest-50 text-forest-700 border border-forest-100 px-2 py-0.5 rounded-full">{item}</span>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between pt-4 border-t border-earth-100">
-          <div>
-            <div className="text-xl font-bold font-serif text-forest-800">₹{pkg.estimatedCost.perPerson.toLocaleString()}</div>
-            <div className="text-xs text-earth-400">per person (2 pax)</div>
-          </div>
-          <span className="text-xs text-earth-500">
-            {pkg.bestSeason}
-          </span>
-        </div>
-      </div>
-    </div>
-  )
-}
+import DestinationCard from '../components/DestinationCard.jsx'
 
 // ─── Day card in itinerary view ──────────────────────────────────────────────
 function DayCard({ day, total }) {
@@ -359,11 +314,11 @@ function CustomBuilder() {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
           {['Choose Stays', 'Set Filters', 'Review & Generate', 'Your Trip'].map((label, i) => (
-            <div key={label} className={`flex items-center gap-1.5 text-xs font-medium ${step >= i + 1 ? 'text-forest-700' : 'text-earth-400'}`}>
+            <div key={label} className={`flex items-center gap-1.5 text-xs font-medium ${step >= i + 1 ? 'text-neutral-700' : 'text-neutral-400'}`}>
               <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                step > i + 1 ? 'bg-forest-600 text-cream' :
-                step === i + 1 ? 'bg-forest-800 text-cream' :
-                'bg-earth-200 text-earth-400'
+                step > i + 1 ? 'bg-neutral-600 text-white' :
+                step === i + 1 ? 'bg-black text-white' :
+                'bg-neutral-200 text-neutral-400'
               }`}>
                 {step > i + 1 ? '✓' : i + 1}
               </div>
@@ -371,52 +326,37 @@ function CustomBuilder() {
             </div>
           ))}
         </div>
-        <div className="h-1.5 bg-earth-200 rounded-full overflow-hidden">
-          <div className="h-full bg-forest-600 rounded-full transition-all duration-500" style={{ width: `${((step - 1) / 3) * 100}%` }} />
+        <div className="h-1.5 bg-neutral-200 rounded-full overflow-hidden">
+          <div className="h-full bg-black rounded-full transition-all duration-500" style={{ width: `${((step - 1) / 3) * 100}%` }} />
         </div>
       </div>
 
       {/* Step 1: Pick properties */}
       {step === 1 && (
         <div>
-          <h3 className="font-serif font-bold text-xl text-forest-800 mb-1">Choose Your Properties</h3>
-          <p className="text-earth-500 text-sm mb-5">Select which forest stays you'd like to visit on your journey</p>
+          <h3 className="font-serif font-bold text-xl text-neutral-900 mb-1">Choose Your Properties</h3>
+          <p className="text-neutral-500 text-sm mb-5">Select which forest stays you'd like to visit on your journey</p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {properties.map(p => (
-              <button
-                key={p.id}
-                onClick={() => toggleProp(p.id)}
-                className={`text-left rounded-2xl border-2 p-4 transition-all ${
-                  selectedProps.includes(p.id)
-                    ? 'border-forest-600 bg-forest-50 shadow-sm'
-                    : 'border-earth-200 bg-white hover:border-forest-300'
-                }`}
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <span className="text-2xl">
-                    {p.type === 'treehouse' ? '🌲' : p.type === 'tent' ? '⛺' : '🏡'}
-                  </span>
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                    selectedProps.includes(p.id) ? 'bg-forest-600 border-forest-600' : 'border-earth-300'
-                  }`}>
-                    {selectedProps.includes(p.id) && <CheckCircle size={12} className="text-white" />}
-                  </div>
-                </div>
-                <div className="font-semibold text-forest-800 text-sm">{p.name}</div>
-                <div className="text-xs text-earth-500 mb-1">{p.location.split(',')[0]}</div>
-                <div className="flex items-center justify-between">
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase ${p.zone === 'north' ? 'bg-forest-100 text-forest-700' : 'bg-earth-100 text-earth-700'}`}>
-                    {p.zone}
-                  </span>
-                  <span className="text-xs font-bold text-forest-700">₹{(p.pricePerNight || p.priceMin)?.toLocaleString()}/n</span>
-                </div>
-              </button>
+              <div key={p.id} style={{ minHeight: '340px' }}>
+                <DestinationCard
+                  imageUrl="/card-bg-1.jpg"
+                  imageAlt={p.name}
+                  title={p.name}
+                  stats={`${p.zone === 'north' ? 'North Zone' : 'South Zone'} · ${p.location.split(',')[0]} · ₹${(p.pricePerNight || p.priceMin)?.toLocaleString()}/night`}
+                  onClick={() => toggleProp(p.id)}
+                  selected={selectedProps.includes(p.id)}
+                  themeColor="0 0% 6%"
+                  ctaLabel="Select Stay"
+                  minHeight="340px"
+                />
+              </div>
             ))}
           </div>
 
           <div className="flex items-center justify-between">
-            <p className="text-sm text-earth-500">
+            <p className="text-sm text-neutral-500">
               {selectedProps.length === 0 ? 'Select at least one property' : `${selectedProps.length} ${selectedProps.length === 1 ? 'property' : 'properties'} selected`}
             </p>
             <button
@@ -582,11 +522,11 @@ export default function PlanTrip() {
   return (
     <div className="min-h-screen bg-cream">
       {/* Header */}
-      <div className="bg-forest-900 text-cream py-16 px-4">
+      <div className="bg-black text-white py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <p className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-3">PTR Journey Planner</p>
+          <p className="text-neutral-400 text-xs font-bold uppercase tracking-widest mb-3">PTR Journey Planner</p>
           <h1 className="font-serif font-bold text-4xl md:text-5xl mb-4">Plan My Trip</h1>
-          <p className="text-forest-300 text-lg font-serif italic">
+          <p className="text-neutral-300 text-lg font-serif italic">
             Choose a ready-made circuit, or build your own multi-property itinerary
           </p>
         </div>
@@ -597,13 +537,13 @@ export default function PlanTrip() {
         <div className="flex gap-3 mb-8 p-1 bg-earth-100 rounded-xl w-fit">
           <button
             onClick={() => { setMode('packages'); setSelectedPackageId(null) }}
-            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${mode === 'packages' ? 'bg-forest-800 text-cream shadow-sm' : 'text-earth-700 hover:text-forest-700'}`}
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${mode === 'packages' ? 'bg-black text-white shadow-sm' : 'text-neutral-700 hover:text-black'}`}
           >
             📋 Browse Packages
           </button>
           <button
             onClick={() => { setMode('custom'); setSelectedPackageId(null) }}
-            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${mode === 'custom' ? 'bg-forest-800 text-cream shadow-sm' : 'text-earth-700 hover:text-forest-700'}`}
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${mode === 'custom' ? 'bg-black text-white shadow-sm' : 'text-neutral-700 hover:text-black'}`}
           >
             🗺️ Build My Own
           </button>
@@ -620,12 +560,18 @@ export default function PlanTrip() {
                 </p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {packages.map(pkg => (
-                    <PackageCard
-                      key={pkg.id}
-                      pkg={pkg}
-                      selected={selectedPackageId === pkg.id}
-                      onSelect={() => setSelectedPackageId(pkg.id)}
-                    />
+                    <div key={pkg.id} style={{ minHeight: '380px' }}>
+                      <DestinationCard
+                        imageUrl="/card-bg-1.jpg"
+                        imageAlt={pkg.name}
+                        title={pkg.name}
+                        stats={`${pkg.duration} Days · ₹${pkg.estimatedCost.perPerson.toLocaleString()}/person · ${pkg.bestSeason}`}
+                        onClick={() => setSelectedPackageId(pkg.id)}
+                        selected={selectedPackageId === pkg.id}
+                        themeColor="0 0% 6%"
+                        ctaLabel="View Itinerary"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
