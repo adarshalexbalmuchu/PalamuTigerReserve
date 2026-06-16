@@ -205,7 +205,7 @@ export default function Stays() {
               {filtered.map(p => (
                 <div key={p.id} style={{ minHeight: '380px' }}>
                   <DestinationCard
-                    imageUrl="/card-bg-1.jpg"
+                    imageUrl={p.imageUrl || '/card-bg-1.jpg'}
                     imageAlt={p.name}
                     title={p.name}
                     stats={`${p.zone === 'north' ? 'North Zone' : 'South Zone'} · ${p.location.split(',')[0]} · ₹${(p.pricePerNight || p.priceMin)?.toLocaleString()}/night`}

@@ -90,6 +90,7 @@ export const properties = [
     contactName: 'Betla Control Room',
     contactNumber: '+918987796001',
     image: 'treehouse',
+    imageUrl: 'https://i.postimg.cc/BnJY2YRB/EUb3s7i-U0AA0u-DA.jpg',
   },
   {
     id: 'kechki-beach-cottage',
@@ -110,6 +111,7 @@ export const properties = [
     contactName: 'Kechki Control Room',
     contactNumber: '+918987796001',
     image: 'cottage',
+    imageUrl: 'https://i.postimg.cc/ZYrxjPPJ/61200203-Kechki-Sangam-Latehar2.jpg',
   },
   {
     id: 'kechki-beach-tent',
@@ -130,6 +132,7 @@ export const properties = [
     contactName: 'Kechki Control Room',
     contactNumber: '+918987796001',
     image: 'tent',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'new-tourist-complex',
@@ -152,6 +155,7 @@ export const properties = [
     contactName: 'Betla Control Room',
     contactNumber: '+918987796001',
     image: 'complex',
+    imageUrl: 'https://i.postimg.cc/VL8DcZsY/images-(3).jpg',
   },
   {
     id: 'frh-barwadih',
@@ -172,6 +176,7 @@ export const properties = [
     contactName: 'Barwadih Forest Range',
     contactNumber: '+918987796001',
     image: 'frh',
+    imageUrl: 'https://i.postimg.cc/fRkX4Y96/images-(4).jpg',
   },
   {
     id: 'netarhat-new-cottage',
@@ -192,6 +197,7 @@ export const properties = [
     contactName: 'Netarhat Range Office',
     contactNumber: '+918987796001',
     image: 'cottage',
+    imageUrl: 'https://i.postimg.cc/Dy8R8Mkg/Netarhat-Jharkhand.jpg',
   },
   {
     id: 'aksi-tree-house',
@@ -212,6 +218,7 @@ export const properties = [
     contactName: 'Aksi Range Office',
     contactNumber: '+918987796001',
     image: 'treehouse',
+    imageUrl: 'https://i.postimg.cc/5tx3FXY7/images-(1).jpg',
   },
   {
     id: 'maromar-frh',
@@ -232,6 +239,7 @@ export const properties = [
     contactName: 'Maromar FRH',
     contactNumber: '+918987796001',
     image: 'frh',
+    imageUrl: 'https://i.postimg.cc/zD94HkJP/images-(2).jpg',
   },
   {
     id: 'rud-frh',
@@ -252,6 +260,7 @@ export const properties = [
     contactName: 'Rud FRH',
     contactNumber: '+918987796001',
     image: 'frh',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'mahuadanr-frh',
@@ -272,6 +281,7 @@ export const properties = [
     contactName: 'Mahuadanr Range',
     contactNumber: '+918987796001',
     image: 'frh',
+    imageUrl: 'https://i.postimg.cc/0y66XPgq/unnamed.jpg',
   },
 ]
 
@@ -303,6 +313,7 @@ export const visitSites = [
     entryRules: 'No entry fee. Guide recommended for trail safety.',
     highlights: ['468-foot drop', 'Post-monsoon peak flow', 'Forest trek to viewpoint', 'Photography hotspot'],
     distanceFromBetla: '95 km south',
+    imageUrl: 'https://i.postimg.cc/0y66XPgq/unnamed.jpg',
   },
   {
     id: 'sugabandh-waterfall',
@@ -360,6 +371,7 @@ export const visitSites = [
     entryRules: 'No entry fee. Respect wildlife corridors.',
     highlights: ['Film-famous Sangam', 'Migratory birds', 'River sandbanks', 'Sunset views'],
     distanceFromBetla: '9 km',
+    imageUrl: 'https://i.postimg.cc/ZYrxjPPJ/61200203-Kechki-Sangam-Latehar2.jpg',
   },
   {
     id: 'netarhat',
@@ -374,6 +386,7 @@ export const visitSites = [
     entryRules: 'No entry fee.',
     highlights: ['Breathtaking sunrise', 'Pine-forested canopy walks', 'Cool climate', 'Astrophotography site', 'Camping'],
     distanceFromBetla: '90 km south',
+    imageUrl: 'https://i.postimg.cc/Dy8R8Mkg/Netarhat-Jharkhand.jpg',
   },
   {
     id: 'tattapani-hot-springs',
@@ -651,6 +664,7 @@ export const packages = [
     subtitle: '2 Days / 2 Nights',
     duration: 2,
     icon: '🌿',
+    imageUrl: 'https://i.postimg.cc/BnJY2YRB/EUb3s7i-U0AA0u-DA.jpg',
     highlight: 'Ideal for first-time visitors',
     description: 'The quintessential PTR experience. Two days of morning safaris, an afternoon at the historic Palamu Forts, and evenings overlooking the forest from your treehouse balcony.',
     estimatedCost: { twoPersons: 12000, perPerson: 6000 },
@@ -695,6 +709,7 @@ export const packages = [
     subtitle: '4 Days / 3 Nights',
     duration: 4,
     icon: '🗺️',
+    imageUrl: 'https://i.postimg.cc/ZYrxjPPJ/61200203-Kechki-Sangam-Latehar2.jpg',
     highlight: 'Most popular multi-property trip',
     description: 'The signature PTR circuit. Move through multiple properties-from Maromar\'s wilderness to the river confluence at Kechki-experiencing safaris, waterfalls, and fort history along the way.',
     estimatedCost: { twoPersons: 22000, perPerson: 11000 },
@@ -762,6 +777,7 @@ export const packages = [
     subtitle: '5 Days / 4 Nights',
     duration: 5,
     icon: '🐺',
+    imageUrl: 'https://i.postimg.cc/Dy8R8Mkg/Netarhat-Jharkhand.jpg',
     highlight: 'India\'s only Wolf Sanctuary experience',
     description: 'An extraordinary 5-day journey from the tiger zones of Betla to the pine forests of Netarhat and down to the Mahuadanr Wolf Sanctuary. End with the spectacular Lodh Falls.',
     estimatedCost: { twoPersons: 32000, perPerson: 16000 },
