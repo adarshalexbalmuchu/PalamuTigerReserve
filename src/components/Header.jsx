@@ -20,12 +20,12 @@ export default function Header() {
 
   useEffect(() => { setMenuOpen(false) }, [location.pathname])
 
-  const headerBase = 'bg-forest-900 shadow-lg'
+  const headerBase = 'bg-white shadow-sm border-b border-gray-100'
 
   return (
     <>
       {/* Government top bar */}
-      <div className="gov-banner">
+      <div className="bg-forest-800 text-forest-100 text-xs py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <span className="hidden sm:block">
             Government of Jharkhand | Department of Forest, Environment &amp; Climate Change
@@ -68,10 +68,10 @@ export default function Header() {
               className="h-10 w-10 rounded-full object-cover shadow-sm flex-shrink-0"
             />
             <div className="leading-none">
-              <p className="text-cream font-serif font-bold text-base tracking-tight leading-tight">
+              <p className="text-forest-900 font-serif font-bold text-base tracking-tight leading-tight">
                 Palamu Tiger Reserve
               </p>
-              <p className="text-forest-300 text-[10px] font-medium tracking-widest uppercase leading-tight">
+              <p className="text-forest-600 text-[10px] font-medium tracking-widest uppercase leading-tight">
                 Official Journey Planner
               </p>
             </div>
@@ -87,8 +87,8 @@ export default function Header() {
                 className={({ isActive }) =>
                   `text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'text-gold'
-                      : 'text-forest-200 hover:text-cream'
+                      ? 'text-forest-700'
+                      : 'text-forest-900 hover:text-forest-600'
                   }`
                 }
               >
@@ -99,13 +99,13 @@ export default function Header() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
-            <Link to="/plan" className="hidden sm:inline-flex items-center gap-1.5 bg-gold text-forest-900 font-semibold text-sm px-4 py-2 rounded-lg hover:bg-gold-light transition-colors shadow-sm">
+            <Link to="/plan" className="hidden sm:inline-flex items-center gap-1.5 bg-forest-800 text-white font-semibold text-sm px-4 py-2 rounded-lg hover:bg-forest-700 transition-colors shadow-sm">
               <TreePine size={15} />
               Plan My Trip
             </Link>
 
             <button
-              className="lg:hidden p-2 rounded-lg text-forest-200 hover:text-cream hover:bg-forest-700 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-forest-800 hover:text-forest-600 hover:bg-gray-100 transition-colors"
               onClick={() => setMenuOpen(v => !v)}
               aria-expanded={menuOpen}
               aria-label="Toggle navigation menu"
@@ -117,7 +117,7 @@ export default function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-forest-900 border-t border-forest-700 px-4 pb-4">
+          <div className="lg:hidden bg-white border-t border-gray-100 px-4 pb-4">
             <div className="flex flex-col gap-1 pt-2">
               {navItems.map(({ to, label }) => (
                 <NavLink
@@ -127,8 +127,8 @@ export default function Header() {
                   className={({ isActive }) =>
                     `px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       isActive
-                        ? 'bg-forest-700 text-gold'
-                        : 'text-forest-200 hover:bg-forest-800 hover:text-cream'
+                        ? 'bg-forest-50 text-forest-700'
+                        : 'text-forest-900 hover:bg-gray-50 hover:text-forest-700'
                     }`
                   }
                 >
@@ -137,7 +137,7 @@ export default function Header() {
               ))}
               <Link
                 to="/plan"
-                className="mt-2 btn-primary justify-center text-sm py-2.5"
+                className="mt-2 btn-primary justify-center text-sm py-2.5 bg-forest-800 hover:bg-forest-700"
               >
                 <TreePine size={15} />
                 Plan My Trip
