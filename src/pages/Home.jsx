@@ -118,14 +118,7 @@ export default function Home() {
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <video
-          className="absolute top-1/2 left-1/2 object-cover"
-          style={{
-            width: '100vh',
-            height: '100vw',
-            minWidth: '100%',
-            minHeight: '100%',
-            transform: 'translate(-50%, -50%) rotate(-90deg)',
-          }}
+          className="absolute inset-0 w-full h-full object-cover"
           src="/hero-video.mp4"
           autoPlay
           muted
