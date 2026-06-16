@@ -3,24 +3,21 @@ import { divIcon } from 'leaflet'
 import { Link } from 'react-router-dom'
 import { properties, visitSites, reserve } from '../data/ptr-data.js'
 
-const typeIcon = (type, emoji) =>
-  divIcon({
-    html: `<div class="custom-marker ${type}" role="img" aria-label="${emoji}">${emoji}</div>`,
-    className: '',
-    iconSize: [36, 36],
-    iconAnchor: [18, 18],
-    popupAnchor: [0, -22],
-  })
+const makeIcon = (bg, border = '#fff') => divIcon({
+  html: `<div style="width:11px;height:11px;border-radius:50%;background:${bg};border:2.5px solid ${border};box-shadow:0 1px 5px rgba(0,0,0,0.4)"></div>`,
+  className: '',
+  iconSize: [11, 11],
+  iconAnchor: [5, 5],
+  popupAnchor: [0, -9],
+})
 
-const stayIcon     = typeIcon('stay',      '🏠')
-const waterfallIcon= typeIcon('waterfall', '💧')
-const heritageIcon = typeIcon('heritage',  '🏰')
-const wildlifeIcon = typeIcon('wildlife',  '🐺')
-const scenicIcon   = typeIcon('scenic',    '🌅')
-const treeIcon     = typeIcon('stay',      '🌲')
+const stayIcon      = makeIcon('#171717')
+const waterfallIcon = makeIcon('#3b82f6')
+const heritageIcon  = makeIcon('#6b7280')
+const wildlifeIcon  = makeIcon('#d97706')
+const scenicIcon    = makeIcon('#059669')
 
 function getIcon(p) {
-  if (p.type === 'treehouse') return treeIcon
   return stayIcon
 }
 
@@ -45,7 +42,6 @@ export default function MapView({ height = '500px', showSites = true, showProper
       aria-label="Interactive map of Palamu Tiger Reserve"
     >
       <ZoomControl position="bottomright" />
-
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -56,21 +52,21 @@ export default function MapView({ height = '500px', showSites = true, showProper
         <Marker key={p.id} position={[p.lat, p.lng]} icon={getIcon(p)}>
           <Popup maxWidth={240}>
             <div className="font-sans p-1">
-              <p className="font-bold text-forest-800 text-sm">{p.name}</p>
-              <p className="text-xs text-earth-600 mb-1">{p.location}</p>
-              <p className="text-xs font-semibold text-forest-700 mb-2">
+              <p className="font-bold text-neutral-800 text-sm">{p.name}</p>
+              <p className="text-xs text-neutral-500 mb-1">{p.location}</p>
+              <p className="text-xs font-semibold text-neutral-700 mb-2">
                 From ₹{p.pricePerNight?.toLocaleString()}/night · {p.units} units
               </p>
               <div className="flex flex-wrap gap-1 mb-2">
-                {p.amenities.ac && <span className="text-[10px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded-full">AC</span>}
-                {p.amenities.food && <span className="text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded-full">Food</span>}
-                {p.amenities.balcony && <span className="text-[10px] bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded-full">Balcony</span>}
+                {p.amenities.ac && <span className="text-[10px] bg-neutral-100 text-neutral-700 px-1.5 py-0.5 rounded-full">AC</span>}
+                {p.amenities.food && <span className="text-[10px] bg-neutral-100 text-neutral-700 px-1.5 py-0.5 rounded-full">Food</span>}
+                {p.amenities.balcony && <span className="text-[10px] bg-neutral-100 text-neutral-700 px-1.5 py-0.5 rounded-full">Balcony</span>}
               </div>
               <a
                 href={`#/stays/${p.id}`}
-                className="block text-center text-xs text-white bg-forest-700 hover:bg-forest-600 rounded-md py-1.5 transition-colors"
+                className="block text-center text-xs text-white bg-black hover:bg-neutral-800 rounded-md py-1.5 transition-colors"
               >
-                View Property →
+                View Property
               </a>
             </div>
           </Popup>
@@ -81,11 +77,11 @@ export default function MapView({ height = '500px', showSites = true, showProper
         <Marker key={s.id} position={[s.lat, s.lng]} icon={getSiteIcon(s)}>
           <Popup maxWidth={240}>
             <div className="font-sans p-1">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-palash mb-0.5">{s.type}</p>
-              <p className="font-bold text-forest-800 text-sm">{s.name}</p>
-              <p className="text-xs text-earth-600 mb-1">{s.subtitle}</p>
-              <p className="text-xs text-earth-700 line-clamp-2 mb-2">{s.description.slice(0, 120)}…</p>
-              <p className="text-xs text-forest-700">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-neutral-500 mb-0.5">{s.type}</p>
+              <p className="font-bold text-neutral-800 text-sm">{s.name}</p>
+              <p className="text-xs text-neutral-500 mb-1">{s.subtitle}</p>
+              <p className="text-xs text-neutral-600 line-clamp-2 mb-2">{s.description.slice(0, 120)}</p>
+              <p className="text-xs text-neutral-700">
                 <strong>Best time:</strong> {s.bestTime}
               </p>
             </div>

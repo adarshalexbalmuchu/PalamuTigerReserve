@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { ChevronRight, Phone, ArrowRight, Map, TreePine } from 'lucide-react'
+import { ChevronRight, Phone } from 'lucide-react'
 import { packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
 import PlanCard from '../components/PlanCard.jsx'
 import DestinationCard from '../components/DestinationCard.jsx'
 
-function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
+function AnimatedStat({ value, unit = '', label }) {
   const [display, setDisplay] = useState(0)
   const ref = useRef(null)
 
@@ -13,13 +13,13 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         let start = 0
-        const end = parseFloat(value)
-        const step = end / 50
+        const end = parseInt(value)
+        const step = end / 60
         const timer = setInterval(() => {
           start += step
           if (start >= end) { setDisplay(end); clearInterval(timer) }
           else setDisplay(Math.floor(start))
-        }, 30)
+        }, 20)
         observer.disconnect()
       }
     }, { threshold: 0.3 })
@@ -28,11 +28,14 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
   }, [value])
 
   return (
-    <div ref={ref} className="text-center p-6" style={{ animationDelay: `${delay}ms` }}>
-      <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-1">
-        {typeof value === 'number' ? display.toLocaleString() : value}{suffix}
+    <div ref={ref} className="py-10 px-6 text-center">
+      <div className="leading-none mb-3">
+        <span className="text-4xl md:text-5xl font-bold text-white tabular-nums">
+          {Math.floor(display).toLocaleString()}
+        </span>
+        {unit && <span className="text-base text-neutral-400 font-medium ml-2">{unit}</span>}
       </div>
-      <div className="text-sm text-neutral-400 font-medium mt-1">{label}</div>
+      <div className="text-[11px] text-neutral-500 uppercase tracking-[0.18em]">{label}</div>
     </div>
   )
 }
@@ -61,11 +64,11 @@ export default function Home() {
       {/* ─── STATS BAR ─── */}
       <section className="bg-black border-y border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            <AnimatedStat value={1129.93} suffix=" sq km" label="Total Reserve Area" delay={0} />
-            <AnimatedStat value={174}     suffix="+"     label="Documented Bird Species" delay={100} />
-            <AnimatedStat value={96}      suffix="+"     label="Forest Accommodations" delay={200} />
-            <AnimatedStat value={1973}    suffix=""      label="Year of Project Tiger Inception" delay={300} />
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-neutral-800">
+            <AnimatedStat value={1130} unit="sq km" label="Total Reserve Area" />
+            <AnimatedStat value={174}  unit="+"     label="Bird Species Documented" />
+            <AnimatedStat value={96}   unit="+"     label="Forest Accommodations" />
+            <AnimatedStat value={1973}              label="Year of Inception" />
           </div>
         </div>
       </section>
@@ -82,7 +85,6 @@ export default function Home() {
             <PlanCard
               imageUrl="/card-bg-1.jpg"
               imageAlt="Palamu Tiger Reserve forest"
-              logo={<TreePine size={20} className="text-white/80" />}
               badge="Packages"
               title="Browse Packages"
               location="Palamu Tiger Reserve, Jharkhand"
@@ -94,7 +96,6 @@ export default function Home() {
             <PlanCard
               imageUrl="/card-bg-1.jpg"
               imageAlt="Palamu Tiger Reserve wildlife"
-              logo={<Map size={20} className="text-white/80" />}
               badge="Custom"
               title="Build My Own Trip"
               location="Design your perfect PTR experience"

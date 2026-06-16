@@ -26,9 +26,6 @@ export default function StayDetail() {
             : 'linear-gradient(155deg, #3d2810 0%, #5c3d1e 50%, #a06840 100%)',
         }}
       >
-        <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl opacity-10 select-none">
-          {p.type === 'treehouse' ? '🌲' : p.type === 'tent' ? '⛺' : p.type === 'cottage' ? '🏡' : '🏠'}
-        </span>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-8">
           <Link to="/stays" className="inline-flex items-center gap-1.5 text-forest-300 hover:text-cream text-sm mb-4 transition-colors">
             <ChevronLeft size={16} /> Back to all stays
