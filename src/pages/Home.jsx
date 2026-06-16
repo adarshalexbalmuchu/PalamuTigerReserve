@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { Map, TreePine, ChevronRight, Clock, Phone, ArrowRight } from 'lucide-react'
+import { Map, TreePine, ChevronRight, Phone, ArrowRight } from 'lucide-react'
 import { reserve, packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
 
 function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
@@ -27,10 +27,10 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
 
   return (
     <div ref={ref} className="text-center p-6" style={{ animationDelay: `${delay}ms` }}>
-      <div className="text-4xl md:text-5xl font-serif font-bold text-forest-800 mb-1">
+      <div className="text-4xl md:text-5xl font-serif font-bold text-gold mb-1">
         {typeof value === 'number' ? display.toLocaleString() : value}{suffix}
       </div>
-      <div className="text-sm text-earth-600 font-medium mt-1">{label}</div>
+      <div className="text-sm text-forest-300 font-medium mt-1">{label}</div>
     </div>
   )
 }
@@ -38,7 +38,7 @@ function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
 function PackageCard({ pkg }) {
   return (
     <div className="card group cursor-pointer">
-      <div className="h-3 bg-gradient-to-r from-forest-700 to-forest-500" />
+      <div className="h-1 bg-gold" />
       <div className="p-6">
         <div className="flex items-start justify-between mb-3">
           <span className="text-3xl">{pkg.icon}</span>
@@ -47,8 +47,7 @@ function PackageCard({ pkg }) {
           </span>
         </div>
         <h3 className="font-serif font-bold text-xl text-forest-800 mb-1">{pkg.name}</h3>
-        <p className="text-sm text-palash font-medium mb-2">{pkg.subtitle}</p>
-        <p className="text-sm text-earth-700 leading-relaxed mb-4 line-clamp-3">{pkg.description}</p>
+        <p className="text-sm text-palash font-medium mb-4">{pkg.subtitle}</p>
         <div className="flex items-center justify-between pt-4 border-t border-earth-100">
           <div>
             <div className="text-lg font-bold text-forest-800">
@@ -79,24 +78,15 @@ function PropertyPreviewCard({ p }) {
 
   return (
     <Link to={`/stays/${p.id}`} className="card group block">
-      <div
-        className="h-48 relative overflow-hidden flex items-end p-4"
-        style={{
-          background: p.zone === 'north'
-            ? 'linear-gradient(160deg, #1a4731 0%, #2d6a4f 60%, #40916c 100%)'
-            : 'linear-gradient(160deg, #3d2810 0%, #5c3d1e 60%, #a06840 100%)',
-        }}
-      >
-        <span className="text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 group-hover:opacity-30 transition-opacity select-none">
-          {p.type === 'treehouse' ? '🌲' : p.type === 'tent' ? '⛺' : '🏡'}
-        </span>
-        <div className="relative z-10">
-          <span className={`badge-zone text-[10px] font-bold ${p.zone === 'north' ? 'bg-forest-800/70 text-forest-200' : 'bg-earth-800/70 text-earth-200'}`}>
-            {p.zone === 'north' ? '⬆ North Zone' : '⬇ South Zone'}
-          </span>
-        </div>
-      </div>
+      <div className={`h-1 ${p.zone === 'north' ? 'bg-forest-600' : 'bg-earth-600'}`} />
       <div className="p-5">
+        <span className={`inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-3 ${
+          p.zone === 'north'
+            ? 'bg-forest-100 text-forest-700'
+            : 'bg-earth-100 text-earth-700'
+        }`}>
+          {p.zone === 'north' ? 'North Zone' : 'South Zone'}
+        </span>
         <h3 className="font-serif font-bold text-lg text-forest-800 mb-0.5">{p.name}</h3>
         <p className="text-xs text-earth-500 mb-3">{p.location}</p>
         <div className="flex flex-wrap gap-1 mb-4">
@@ -131,68 +121,69 @@ export default function Home() {
     <div className="overflow-x-hidden">
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div
-          className="absolute inset-0 hero-gradient"
-          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z\' fill=\'%232d6a4f\' fill-opacity=\'0.07\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
-                   backgroundBlendMode: 'multiply' }}
-        />
-
-        {/* Floating decorative elements */}
-        <div className="absolute top-20 right-20 text-6xl opacity-5 animate-pulse-slow select-none hidden lg:block">🐯</div>
-        <div className="absolute bottom-32 right-40 text-4xl opacity-5 select-none hidden lg:block">🐘</div>
-        <div className="absolute top-40 left-1/3 text-3xl opacity-5 select-none hidden lg:block">🦅</div>
-
+      <section className="relative min-h-screen flex items-center hero-gradient">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <div className="max-w-3xl">
-            {/* Status badge */}
-            <div className="flex items-center gap-2 mb-8">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                parkOpen
-                  ? 'bg-forest-400/20 text-forest-300 border border-forest-400/30'
-                  : 'bg-palash/20 text-red-300 border border-palash/30'
-              }`}>
-                <span className={`w-2 h-2 rounded-full ${parkOpen ? 'bg-forest-400 animate-pulse' : 'bg-palash'}`} />
-                {parkOpen ? 'Park Open for Visitors' : 'Park Currently Closed (Jul–Sep)'}
-              </span>
-              <span className="text-forest-400 text-xs">Est. 1973 · Project Tiger</span>
+          <div className="flex items-center gap-16">
+
+            {/* Left column: all text */}
+            <div className="flex-1 max-w-2xl">
+              {/* Status badge */}
+              <div className="flex items-center gap-3 mb-8">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                  parkOpen
+                    ? 'bg-forest-400/20 text-forest-300 border border-forest-400/30'
+                    : 'bg-palash/20 text-red-300 border border-palash/30'
+                }`}>
+                  <span className={`w-2 h-2 rounded-full ${parkOpen ? 'bg-forest-400 animate-pulse' : 'bg-palash'}`} />
+                  {parkOpen ? 'Park Open for Visitors' : 'Park Currently Closed (Jul–Sep)'}
+                </span>
+                <span className="text-forest-400 text-xs">Est. 1973 · Project Tiger</span>
+              </div>
+
+              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
+                Palamu
+                <br />
+                <span className="text-gold">Tiger Reserve</span>
+              </h1>
+
+              <p className="text-xl text-forest-200 font-serif italic mb-10">
+                Where Ancient Forests Meet Living History
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/plan" className="btn-primary text-base px-8 py-3.5 shadow-gold">
+                  <TreePine size={18} />
+                  Plan My Journey
+                </Link>
+                <Link
+                  to="/explore"
+                  className="btn-secondary text-base px-8 py-3.5 border-forest-400 text-forest-200 hover:bg-forest-700 hover:text-cream hover:border-forest-700"
+                >
+                  <Map size={18} />
+                  Explore the Map
+                </Link>
+              </div>
             </div>
 
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
-              Palamu
-              <br />
-              <span className="text-gold">Tiger Reserve</span>
-            </h1>
-
-            <p className="text-xl text-forest-200 font-serif italic mb-10">
-              Where Ancient Forests Meet Living History
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/plan" className="btn-primary text-base px-8 py-3.5 shadow-gold">
-                <TreePine size={18} />
-                Plan My Journey
-              </Link>
-              <Link to="/explore" className="btn-secondary text-base px-8 py-3.5 border-forest-400 text-forest-200 hover:bg-forest-700 hover:text-cream hover:border-forest-700">
-                <Map size={18} />
-                Explore the Map
-              </Link>
+            {/* Right column: logo (desktop only) */}
+            <div className="hidden lg:flex flex-shrink-0 items-center justify-center">
+              <img
+                src="/logo-transparent.png"
+                alt=""
+                aria-hidden="true"
+                className="w-48 h-48 object-contain opacity-90"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </div>
+
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-forest-400">
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-forest-400 to-transparent animate-bounce" />
         </div>
       </section>
 
-      {/* ─── STATS ─── */}
-      <section className="bg-white border-y border-earth-100">
+      {/* ─── STATS BAR ─── */}
+      <section className="bg-forest-950 border-y border-forest-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 divide-x-0 md:divide-x divide-earth-100">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             <AnimatedStat value={1129.93} suffix=" sq km" label="Total Reserve Area" delay={0} />
             <AnimatedStat value={174}     suffix="+"     label="Documented Bird Species" delay={100} />
             <AnimatedStat value={96}      suffix="+"     label="Forest Accommodations" delay={200} />
@@ -201,58 +192,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── MODE ENTRY ─── */}
-      <section className="py-20 bg-forest-pattern">
+      {/* ─── PLAN CARDS ─── */}
+      <section className="py-24 bg-white section-divider">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-header mb-3">Plan Your PTR Journey</h2>
             <p className="section-sub">Choose how you'd like to explore Palamu Tiger Reserve</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Mode A */}
-            <Link to="/plan" state={{ mode: 'packages' }} className="group relative card p-8 hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-forest-50 rounded-full -translate-y-8 translate-x-8 opacity-50" />
-              <div className="relative">
-                <div className="w-14 h-14 bg-forest-100 text-forest-700 rounded-2xl flex items-center justify-center text-2xl mb-5">
-                  📋
-                </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-palash mb-2">Mode A</div>
-                <h3 className="font-serif font-bold text-2xl text-forest-800 mb-3">Browse Packages</h3>
-                <p className="text-earth-600 text-sm leading-relaxed mb-6">
-                  Choose from our curated circuits — from the Classic Betla Weekend to the Wolf & Wilderness
-                  5-day adventure. Pre-built itineraries with all logistics handled.
-                </p>
-                <span className="btn-primary text-sm inline-flex group-hover:bg-forest-700">
-                  Browse {packages.length} Packages <ArrowRight size={15} />
-                </span>
-              </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Packages */}
+            <Link to="/plan" state={{ mode: 'packages' }} className="group block border-l-4 border-forest-600 bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-forest-600 bg-forest-50 px-2.5 py-1 rounded mb-4">
+                Packages
+              </span>
+              <h3 className="font-serif font-bold text-2xl text-forest-800 mb-2">Browse Packages</h3>
+              <p className="text-earth-600 text-sm mb-6">
+                Pre-built itineraries with all logistics handled — from the Classic Betla Weekend to the Wolf &amp; Wilderness 5-day adventure.
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest-700 group-hover:text-palash transition-colors">
+                Browse {packages.length} Packages <ArrowRight size={15} />
+              </span>
             </Link>
 
-            {/* Mode B */}
-            <Link to="/plan" state={{ mode: 'custom' }} className="group relative card p-8 hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full -translate-y-8 translate-x-8 opacity-50" />
-              <div className="relative">
-                <div className="w-14 h-14 bg-gold/10 text-earth-700 rounded-2xl flex items-center justify-center text-2xl mb-5">
-                  🗺️
-                </div>
-                <div className="text-xs font-bold uppercase tracking-wider text-gold-dark mb-2">Mode B</div>
-                <h3 className="font-serif font-bold text-2xl text-forest-800 mb-3">Build My Own Trip</h3>
-                <p className="text-earth-600 text-sm leading-relaxed mb-6">
-                  Select your preferred properties, set your budget and group size, and let our planner
-                  auto-generate a day-by-day itinerary with commutation contacts.
-                </p>
-                <span className="btn-secondary text-sm inline-flex border-earth-300 hover:bg-forest-800 hover:border-forest-800">
-                  Start Custom Builder <ArrowRight size={15} />
-                </span>
-              </div>
+            {/* Custom */}
+            <Link to="/plan" state={{ mode: 'custom' }} className="group block border-l-4 border-gold bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
+              <span className="inline-block text-xs font-bold uppercase tracking-wider text-earth-700 bg-gold/10 px-2.5 py-1 rounded mb-4">
+                Custom
+              </span>
+              <h3 className="font-serif font-bold text-2xl text-forest-800 mb-2">Build My Own Trip</h3>
+              <p className="text-earth-600 text-sm mb-6">
+                Select properties, set your budget and group size, and auto-generate a day-by-day itinerary with commutation contacts.
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-earth-700 group-hover:text-palash transition-colors">
+                Start Custom Builder <ArrowRight size={15} />
+              </span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* ─── FEATURED STAYS ─── */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white section-divider">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -277,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* ─── PACKAGES ─── */}
-      <section className="py-20 bg-earth-50">
+      <section className="py-24 bg-cream section-divider">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="section-header mb-3">Ready-Made Packages</h2>
@@ -290,70 +271,55 @@ export default function Home() {
       </section>
 
       {/* ─── IMPORTANT INFO ─── */}
-      <section className="py-16 bg-white border-t border-earth-100">
+      <section className="py-16 bg-forest-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Check-in alert */}
-            <div className="rounded-2xl bg-amber-50 border border-amber-200 p-6">
-              <div className="flex items-start gap-3 mb-4">
-                <Clock size={20} className="text-amber-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-serif font-bold text-lg text-forest-800">4:00 PM Arrival Mandate</h3>
-                  <p className="text-sm text-earth-600 mt-1">
-                    All guests <strong>must</strong> report to the PTR reception office before 4:00 PM on their arrival day.
-                    Entry into the Tiger Reserve after 4:00 PM is <strong>strictly prohibited</strong> under any circumstances.
-                  </p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3 mt-4 text-sm">
+
+            {/* Check-in times */}
+            <div>
+              <h3 className="font-serif font-bold text-xl text-cream mb-6">4:00 PM Arrival Mandate</h3>
+              <div className="grid grid-cols-2 gap-3">
                 {[
                   { label: 'Check-in', value: '1:00 PM' },
                   { label: 'Check-out', value: '11:00 AM' },
                   { label: 'Arrival Deadline', value: '4:00 PM' },
                   { label: 'ID Proof', value: 'Mandatory' },
                 ].map(({ label, value }) => (
-                  <div key={label} className="bg-white rounded-lg p-3 border border-amber-100">
-                    <div className="text-xs text-earth-500 font-medium">{label}</div>
-                    <div className="font-bold text-forest-800 mt-0.5">{value}</div>
+                  <div key={label} className="bg-forest-700 rounded-lg p-4">
+                    <div className="text-xs text-forest-300 font-medium mb-1">{label}</div>
+                    <div className="font-bold text-cream">{value}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Contact strip */}
-            <div className="rounded-2xl bg-forest-900 p-6 text-cream">
-              <div className="flex items-start gap-3 mb-4">
-                <Phone size={20} className="text-gold flex-shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-serif font-bold text-lg">Get in Touch</h3>
-                  <p className="text-forest-300 text-sm mt-1">
-                    For bookings, queries, or emergencies — our helplines are available during forest hours.
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-3 mt-2">
+            {/* Contact links */}
+            <div>
+              <h3 className="font-serif font-bold text-xl text-cream mb-6">Get in Touch</h3>
+              <div className="space-y-3">
                 <a
                   href={`tel:${contacts.helpline.number}`}
-                  className="flex items-center justify-between bg-forest-800 hover:bg-forest-700 rounded-xl p-4 transition-colors group"
+                  className="flex items-center justify-between bg-forest-700 hover:bg-forest-600 rounded-lg p-4 transition-colors group"
                 >
                   <div>
-                    <div className="text-xs text-forest-400 font-medium">{contacts.helpline.label}</div>
+                    <div className="text-xs text-forest-300 font-medium">{contacts.helpline.label}</div>
                     <div className="font-bold text-gold text-lg">{contacts.helpline.display}</div>
                   </div>
                   <Phone size={18} className="text-gold group-hover:scale-110 transition-transform" />
                 </a>
                 <a
                   href={`tel:${contacts.complaints.number}`}
-                  className="flex items-center justify-between bg-forest-800 hover:bg-forest-700 rounded-xl p-4 transition-colors group"
+                  className="flex items-center justify-between bg-forest-700 hover:bg-forest-600 rounded-lg p-4 transition-colors group"
                 >
                   <div>
-                    <div className="text-xs text-forest-400 font-medium">{contacts.complaints.label}</div>
+                    <div className="text-xs text-forest-300 font-medium">{contacts.complaints.label}</div>
                     <div className="font-bold text-forest-200 text-lg">{contacts.complaints.display}</div>
                   </div>
                   <Phone size={18} className="text-forest-300 group-hover:scale-110 transition-transform" />
                 </a>
               </div>
             </div>
+
           </div>
         </div>
       </section>
