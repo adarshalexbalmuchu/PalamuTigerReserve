@@ -121,60 +121,57 @@ export default function Home() {
     <div className="overflow-x-hidden">
 
       {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex items-center hero-gradient">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
-          <div className="flex items-center gap-16">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/hero-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        {/* Dark overlay so text stays readable */}
+        <div className="absolute inset-0 bg-forest-950/65" />
 
-            {/* Left column: all text */}
-            <div className="flex-1 max-w-2xl">
-              {/* Status badge */}
-              <div className="flex items-center gap-3 mb-8">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
-                  parkOpen
-                    ? 'bg-forest-400/20 text-forest-300 border border-forest-400/30'
-                    : 'bg-palash/20 text-red-300 border border-palash/30'
-                }`}>
-                  <span className={`w-2 h-2 rounded-full ${parkOpen ? 'bg-forest-400 animate-pulse' : 'bg-palash'}`} />
-                  {parkOpen ? 'Park Open for Visitors' : 'Park Currently Closed (Jul–Sep)'}
-                </span>
-                <span className="text-forest-400 text-xs">Est. 1973 · Project Tiger</span>
-              </div>
-
-              <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
-                Palamu
-                <br />
-                <span className="text-gold">Tiger Reserve</span>
-              </h1>
-
-              <p className="text-xl text-forest-200 font-serif italic mb-10">
-                Where Ancient Forests Meet Living History
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/plan" className="btn-primary text-base px-8 py-3.5 ">
-                  <TreePine size={18} />
-                  Plan My Journey
-                </Link>
-                <Link
-                  to="/explore"
-                  className="btn-secondary text-base px-8 py-3.5 border-forest-400 text-forest-200 hover:bg-forest-700 hover:text-cream hover:border-forest-700"
-                >
-                  <Map size={18} />
-                  Explore the Map
-                </Link>
-              </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+          <div className="max-w-2xl">
+            {/* Status badge */}
+            <div className="flex items-center gap-3 mb-8">
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                parkOpen
+                  ? 'bg-forest-400/20 text-forest-300 border border-forest-400/30'
+                  : 'bg-palash/20 text-red-300 border border-palash/30'
+              }`}>
+                <span className={`w-2 h-2 rounded-full ${parkOpen ? 'bg-forest-400 animate-pulse' : 'bg-palash'}`} />
+                {parkOpen ? 'Park Open for Visitors' : 'Park Currently Closed (Jul–Sep)'}
+              </span>
+              <span className="text-forest-400 text-xs">Est. 1973 · Project Tiger</span>
             </div>
 
-            {/* Right column: logo (desktop only) */}
-            <div className="hidden lg:flex flex-shrink-0 items-center justify-center">
-              <img
-                src="/logo-transparent.png"
-                alt=""
-                aria-hidden="true"
-                className="w-48 h-48 object-contain opacity-90"
-              />
-            </div>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6">
+              Palamu
+              <br />
+              <span className="text-gold">Tiger Reserve</span>
+            </h1>
 
+            <p className="text-xl text-forest-200 font-serif italic mb-10">
+              Where Ancient Forests Meet Living History
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/plan" className="btn-primary text-base px-8 py-3.5">
+                <TreePine size={18} />
+                Plan My Journey
+              </Link>
+              <Link
+                to="/explore"
+                className="btn-secondary text-base px-8 py-3.5 border-forest-400 text-forest-200 hover:bg-forest-700 hover:text-cream hover:border-forest-700"
+              >
+                <Map size={18} />
+                Explore the Map
+              </Link>
+            </div>
           </div>
         </div>
       </section>
