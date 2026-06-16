@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-forest-800: #1a4731;
+    --color-forest-600: #2d6a4f;
+    --color-palash: #c0392b;
+    --color-gold: #d4a853;
+    --color-cream: #f8f4ef;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-forest-900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-forest-600;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-forest-800 text-cream font-medium px-6 py-3 rounded-lg
+           hover:bg-forest-700 active:bg-forest-900 transition-all duration-200
+           focus-visible:ring-2 focus-visible:ring-forest-400 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-forest-800 text-forest-800 font-medium px-6 py-3 rounded-lg
+           hover:bg-forest-800 hover:text-cream transition-all duration-200;
+  }
+
+  .btn-palash {
+    @apply inline-flex items-center justify-center gap-2 bg-palash text-white font-medium px-6 py-3 rounded-lg
+           hover:bg-palash-dark transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-nature overflow-hidden hover:shadow-nature-lg transition-all duration-300;
+  }
+
+  .section-header {
+    @apply text-3xl md:text-4xl font-serif font-bold text-forest-800;
+  }
+
+  .section-sub {
+    @apply text-lg text-earth-600 font-serif italic;
+  }
+
+  .badge-zone {
+    @apply inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full;
+  }
+
+  .badge-north {
+    @apply badge-zone bg-forest-100 text-forest-700;
+  }
+
+  .badge-south {
+    @apply badge-zone bg-earth-100 text-earth-700;
+  }
+
+  .amenity-chip {
+    @apply inline-flex items-center gap-1.5 text-xs text-earth-700 bg-earth-50 border border-earth-200 px-2.5 py-1 rounded-full;
+  }
+
+  .gov-banner {
+    @apply bg-forest-950 text-forest-200 text-xs py-1.5 px-4;
+  }
+
+  .input-field {
+    @apply w-full border border-earth-200 bg-white rounded-lg px-4 py-2.5 text-forest-900
+           focus:outline-none focus:border-forest-600 focus:ring-2 focus:ring-forest-100 transition-colors;
+  }
+
+  .select-field {
+    @apply input-field appearance-none cursor-pointer;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-earth-700 hover:text-forest-700 transition-colors duration-200 relative
+           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-forest-600
+           hover:after:w-full after:transition-all after:duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-forest-700 after:w-full;
+  }
+
+  .stat-card {
+    @apply text-center p-6;
+  }
+
+  .policy-slab {
+    @apply flex items-start gap-3 p-4 rounded-xl border;
+  }
+
+  .day-card {
+    @apply bg-white border border-earth-200 rounded-2xl overflow-hidden;
+  }
+
+  .timeline-dot {
+    @apply w-3 h-3 rounded-full bg-forest-600 border-2 border-white shadow-sm flex-shrink-0 mt-1.5;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-forest-pattern {
+    background-image: radial-gradient(circle at 20% 50%, rgba(45,106,79,0.08) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(26,71,49,0.05) 0%, transparent 50%);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(13,42,28,0.97) 0%, rgba(26,71,49,0.92) 40%, rgba(45,106,79,0.88) 100%);
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: 'Inter', sans-serif;
+  border-radius: 1rem;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px rgba(13,42,28,0.18);
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+
+/* Custom marker styles */
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(13,42,28,0.25);
+  border: 2px solid var(--color-forest-600);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.custom-marker:hover {
+  transform: scale(1.15);
+}
+
+.custom-marker.heritage { border-color: #c0392b; }
+.custom-marker.waterfall { border-color: #2980b9; }
+.custom-marker.wildlife { border-color: #d4a853; }
+.custom-marker.stay { border-color: #1a4731; }
+.custom-marker.scenic { border-color: #40916c; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: #74c69d; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2d6a4f; }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
