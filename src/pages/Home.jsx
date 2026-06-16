@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { ChevronRight, Phone, ArrowRight } from 'lucide-react'
+import { ChevronRight, Phone, ArrowRight, Map, TreePine } from 'lucide-react'
 import { packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
+import PlanCard from '../components/PlanCard.jsx'
 
 function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
   const [display, setDisplay] = useState(0)
@@ -149,31 +150,30 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Link to="/plan" state={{ mode: 'packages' }} className="group block border-l-4 border-black bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
-              <span className="inline-block text-xs font-bold uppercase tracking-wider text-black bg-neutral-100 px-2.5 py-1 rounded mb-4">
-                Packages
-              </span>
-              <h3 className="font-serif font-bold text-2xl text-black mb-2">Browse Packages</h3>
-              <p className="text-neutral-600 text-sm mb-6">
-                Pre-built itineraries with all logistics handled — from the Classic Betla Weekend to the Wolf &amp; Wilderness 5-day adventure.
-              </p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-700 group-hover:text-black transition-colors">
-                Browse {packages.length} Packages <ArrowRight size={15} />
-              </span>
-            </Link>
-
-            <Link to="/plan" state={{ mode: 'custom' }} className="group block border-l-4 border-neutral-400 bg-white rounded-xl shadow-nature hover:shadow-nature-lg p-8 transition-all duration-300">
-              <span className="inline-block text-xs font-bold uppercase tracking-wider text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded mb-4">
-                Custom
-              </span>
-              <h3 className="font-serif font-bold text-2xl text-black mb-2">Build My Own Trip</h3>
-              <p className="text-neutral-600 text-sm mb-6">
-                Select properties, set your budget and group size, and auto-generate a day-by-day itinerary with commutation contacts.
-              </p>
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-700 group-hover:text-black transition-colors">
-                Start Custom Builder <ArrowRight size={15} />
-              </span>
-            </Link>
+            <PlanCard
+              imageUrl="/card-bg-1.jpg"
+              imageAlt="Palamu Tiger Reserve forest"
+              logo={<TreePine size={20} className="text-white/80" />}
+              badge="Packages"
+              title="Browse Packages"
+              location="Palamu Tiger Reserve, Jharkhand"
+              overview={`Pre-built itineraries with all logistics handled — from the Classic Betla Weekend to the Wolf & Wilderness ${packages.length > 0 ? packages.length + '-package' : ''} adventure.`}
+              cta="View Packages"
+              to="/plan"
+              state={{ mode: 'packages' }}
+            />
+            <PlanCard
+              imageUrl="/card-bg-1.jpg"
+              imageAlt="Palamu Tiger Reserve wildlife"
+              logo={<Map size={20} className="text-white/80" />}
+              badge="Custom"
+              title="Build My Own Trip"
+              location="Design your perfect PTR experience"
+              overview="Select properties, set your budget and group size, and auto-generate a day-by-day itinerary with commutation contacts."
+              cta="Start Building"
+              to="/plan"
+              state={{ mode: 'custom' }}
+            />
           </div>
         </div>
       </section>
