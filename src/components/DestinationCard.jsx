@@ -1,23 +1,33 @@
+import { useState } from 'react'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 
 export default function DestinationCard({
   imageUrl, imageAlt, title, stats, href, to, themeColor = '0 0% 8%',
   onClick, selected = false, ctaLabel = 'Explore Now', minHeight = '380px'
 }) {
+  const [imgFailed, setImgFailed] = useState(false)
+
   const inner = (
     <div
       style={{ '--theme-color': themeColor, minHeight }}
       className="group relative w-full h-full overflow-hidden rounded-2xl shadow-lg
-                 transition-all duration-500 ease-in-out group-hover:scale-[1.03]"
+                 transition-all duration-500 ease-in-out"
     >
-      {/* Background image with zoom */}
-      <div
-        className="absolute inset-0 bg-cover bg-center
-                   transition-transform duration-500 ease-in-out group-hover:scale-110"
-        style={{ backgroundImage: `url(${imageUrl})` }}
-        role="img"
-        aria-label={imageAlt}
-      />
+      {/* Background image with graceful fallback */}
+      {!imgFailed ? (
+        <img
+          src={imageUrl}
+          alt={imageAlt || title}
+          onError={() => setImgFailed(true)}
+          className="absolute inset-0 w-full h-full object-cover
+                     transition-transform duration-500 ease-in-out group-hover:scale-110"
+        />
+      ) : (
+        <div
+          className="absolute inset-0 transition-transform duration-500 ease-in-out group-hover:scale-110"
+          style={{ background: 'linear-gradient(155deg, #071910 0%, #1a4731 50%, #2d6a4f 100%)' }}
+        />
+      )}
 
       {/* Gradient overlay */}
       <div
