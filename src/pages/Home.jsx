@@ -124,7 +124,7 @@ export default function Home() {
             height: '100vw',
             minWidth: '100%',
             minHeight: '100%',
-            transform: 'translate(-50%, -50%) rotate(90deg)',
+            transform: 'translate(-50%, -50%) rotate(-90deg)',
           }}
           src="/hero-video.mp4"
           autoPlay
