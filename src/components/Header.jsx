@@ -71,10 +71,12 @@ export default function Header() {
           aria-label="Main navigation"
         >
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="Palamu Tiger Reserve Home">
-            <div className="w-9 h-9 bg-forest-600 rounded-full flex items-center justify-center text-lg shadow-sm">
-              🐯
-            </div>
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0" aria-label="Palamu Tiger Reserve Home">
+            <img
+              src="/logo-transparent.png"
+              alt="Palamu Tiger Reserve"
+              className="h-10 w-10 object-contain"
+            />
             <div className="leading-none">
               <p className="text-cream font-serif font-bold text-base tracking-tight leading-tight">
                 Palamu Tiger Reserve

@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import {
-  Map, TreePine, Eye, Calendar, ChevronRight,
-  Shield, Clock, Phone, AlertCircle, Star, ArrowRight,
-  Mountain, Waves, Castle
-} from 'lucide-react'
-import { reserve, season, packages, properties, wildlife, heritage, contacts, isSeasonOpen } from '../data/ptr-data.js'
+import { Map, TreePine, ChevronRight, Clock, Phone, ArrowRight } from 'lucide-react'
+import { reserve, packages, properties, contacts, isSeasonOpen } from '../data/ptr-data.js'
 
 function AnimatedStat({ value, suffix = '', label, delay = 0 }) {
   const [display, setDisplay] = useState(0)
@@ -127,42 +123,9 @@ function PropertyPreviewCard({ p }) {
   )
 }
 
-function WildlifeSpotlightCard({ animal }) {
-  const difficultyColor = {
-    'Very common': 'text-green-600',
-    'Frequent': 'text-green-600',
-    'Occasional': 'text-amber-600',
-    'Moderate (best at Mahuadanr)': 'text-amber-600',
-    'Rare': 'text-orange-600',
-    'Extremely rare': 'text-red-600',
-    'Easy – many species commonly sighted': 'text-green-600',
-    'Rare – increasing with conservation': 'text-orange-600',
-  }[animal.sightingDifficulty] || 'text-amber-600'
-
-  return (
-    <div className="bg-white border border-earth-100 rounded-2xl p-5 hover:shadow-nature transition-shadow">
-      <div className="flex items-start gap-4">
-        <div className="w-12 h-12 bg-forest-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
-          {animal.icon}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h4 className="font-serif font-bold text-forest-800">{animal.name}</h4>
-          <p className="text-xs text-earth-500 italic mb-2">{animal.scientific}</p>
-          <p className="text-xs text-earth-700 line-clamp-2 mb-2">{animal.description}</p>
-          <div className="flex items-center gap-1 text-xs">
-            <Eye size={11} />
-            <span className={`font-semibold ${difficultyColor}`}>{animal.sightingDifficulty}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function Home() {
   const parkOpen = isSeasonOpen()
   const featuredProperties = properties.filter(p => ['new-tree-house-betla', 'kechki-beach-cottage', 'netarhat-new-cottage'].includes(p.id))
-  const featuredWildlife = wildlife.slice(0, 6)
 
   return (
     <div className="overflow-x-hidden">
@@ -202,14 +165,8 @@ export default function Home() {
               <span className="text-gold">Tiger Reserve</span>
             </h1>
 
-            <p className="text-xl text-forest-200 font-serif italic mb-4">
+            <p className="text-xl text-forest-200 font-serif italic mb-10">
               Where Ancient Forests Meet Living History
-            </p>
-
-            <p className="text-forest-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl">
-              Journey through {reserve.totalArea.toLocaleString()} sq km of Jharkhand's most
-              extraordinary wilderness — home to Asian elephants, Indian grey wolves, 174+ bird species,
-              and 17th-century Chero dynasty forts. India's original 1973 Project Tiger reserve.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -221,21 +178,6 @@ export default function Home() {
                 <Map size={18} />
                 Explore the Map
               </Link>
-            </div>
-
-            {/* Quick facts strip */}
-            <div className="mt-12 flex flex-wrap gap-6">
-              {[
-                { label: 'Total Area', value: `${reserve.totalArea.toLocaleString()} sq km` },
-                { label: 'Best Season', value: 'Oct – Feb' },
-                { label: 'Park Open', value: 'Oct 1 – Jun 30' },
-                { label: 'Nearest Rail', value: 'Barwadih (12 km)' },
-              ].map(({ label, value }) => (
-                <div key={label} className="text-sm">
-                  <div className="text-forest-400 text-xs font-medium uppercase tracking-wider">{label}</div>
-                  <div className="text-cream font-semibold mt-0.5">{value}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -334,123 +276,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── SEASONAL INFO ─── */}
-      <section className="py-16 bg-forest-800 text-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: '❄️',
-                title: 'Winter (Oct – Feb)',
-                subtitle: 'Best Season',
-                desc: 'Temperatures 8°C–28°C. Peak wildlife activity, maximum safari openings, crystal-clear forest trails. Wolf breeding season at Mahuadanr.',
-                highlight: true,
-              },
-              {
-                icon: '☀️',
-                title: 'Summer (Mar – Jun)',
-                subtitle: 'Hot but Wildlife-Rich',
-                desc: 'Temperatures up to 50°C. Wildlife congregates near water sources. Morning safaris best. Netarhat remains cooler.',
-                highlight: false,
-              },
-              {
-                icon: '🌧️',
-                title: 'Monsoon (Jul – Sep)',
-                subtitle: 'Park Closed',
-                desc: 'Park officially closed to tourists. 1,000–1,075 mm rainfall rejuvenates the Sal forests. No bookings accepted.',
-                highlight: false,
-              },
-            ].map(({ icon, title, subtitle, desc, highlight }) => (
-              <div key={title} className={`rounded-2xl p-6 border ${highlight ? 'bg-forest-700 border-forest-500' : 'bg-forest-900 border-forest-700'}`}>
-                <span className="text-3xl block mb-3">{icon}</span>
-                <div className="text-xs font-bold uppercase tracking-wider text-gold mb-1">{subtitle}</div>
-                <h3 className="font-serif font-bold text-xl mb-2">{title}</h3>
-                <p className="text-forest-300 text-sm leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── WILDLIFE SPOTLIGHT ─── */}
-      <section className="py-20 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-header mb-3">Wildlife of PTR</h2>
-            <p className="section-sub">Beyond the tiger — a rich, multifaceted biodiversity</p>
-            <p className="text-earth-600 text-sm mt-3 max-w-2xl mx-auto">
-              PTR's single confirmed tiger (2023) makes broader wildlife experiences our focus.
-              The reserve's elephants, wolves, leopards, and 174+ bird species offer extraordinary
-              encounter opportunities.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {featuredWildlife.map(a => <WildlifeSpotlightCard key={a.id} animal={a} />)}
-          </div>
-          <div className="mt-8 text-center">
-            <Link to="/about#wildlife" className="btn-secondary">
-              <Eye size={16} />
-              Full Wildlife Guide
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── HIGHLIGHTS ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="section-header mb-3">Explore PTR's Highlights</h2>
-            <p className="section-sub">Waterfalls, heritage forts, and India's only Wolf Sanctuary</p>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <Waves size={28} />,
-                title: 'Dramatic Waterfalls',
-                desc: 'Three spectacular falls — Lodh Falls (468 ft), Suga Bandh (80 ft), and Mirchaiya — cascade through ancient Sal forests.',
-                action: 'Explore Waterfalls',
-                to: '/explore',
-                bg: 'bg-blue-50',
-                color: 'text-blue-700',
-                border: 'border-blue-100',
-              },
-              {
-                icon: <Castle size={28} />,
-                title: 'Chero Dynasty Forts',
-                  desc: "Palamu's twin forts — built under Raja Medini Ray (1662–75) — feature Mughal stonework, Persian inscriptions, and epic British siege history.",
-                action: 'Discover Heritage',
-                to: '/about#heritage',
-                bg: 'bg-palash/5',
-                color: 'text-palash',
-                border: 'border-palash/10',
-              },
-              {
-                icon: <Mountain size={28} />,
-                title: 'Netarhat Hill Station',
-                  desc: 'Queen of Chhotanagpur — pine forests, breathtaking sunrise views, cool climate year-round, and astrophotography sites.',
-                action: 'Plan a Visit',
-                to: '/explore',
-                bg: 'bg-gold/5',
-                color: 'text-earth-700',
-                border: 'border-gold/20',
-              },
-            ].map(({ icon, title, desc, action, to, bg, color, border }) => (
-              <div key={title} className={`card p-8 border ${border}`}>
-                <div className={`w-14 h-14 ${bg} ${color} rounded-2xl flex items-center justify-center mb-5`}>
-                  {icon}
-                </div>
-                <h3 className="font-serif font-bold text-xl text-forest-800 mb-3">{title}</h3>
-                <p className="text-earth-600 text-sm leading-relaxed mb-6">{desc}</p>
-                <Link to={to} className={`text-sm font-semibold ${color} hover:underline flex items-center gap-1`}>
-                  {action} <ArrowRight size={14} />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── PACKAGES ─── */}
       <section className="py-20 bg-earth-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -530,29 +355,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ─── CONSERVATION MESSAGE ─── */}
-      <section className="py-16 bg-forest-800 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 select-none text-[20rem] flex items-center justify-center font-serif leading-none">
-          🌿
-        </div>
-        <div className="relative max-w-3xl mx-auto px-4">
-          <div className="text-forest-400 text-xs font-bold uppercase tracking-widest mb-4">
-            Since 1973 · Project Tiger
-          </div>
-          <h2 className="font-serif text-4xl text-cream font-bold mb-4">
-            Protecting a Living Heritage
-          </h2>
-          <p className="text-forest-300 leading-relaxed mb-8">
-            In 1932, J.W. Nicholson conducted the world's first tiger census here using the pugmark method.
-            PTR became one of India's original nine Project Tiger reserves in 1973. Your visit directly
-            supports the Forest Department's ongoing efforts to restore this extraordinary landscape.
-          </p>
-          <Link to="/about" className="btn-primary bg-gold hover:bg-gold-light text-forest-900 hover:text-forest-900 font-bold">
-            Our Conservation Story <ArrowRight size={15} />
-          </Link>
         </div>
       </section>
 

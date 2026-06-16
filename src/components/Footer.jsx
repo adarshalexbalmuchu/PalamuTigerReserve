@@ -32,10 +32,12 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-10 h-10 bg-forest-700 rounded-full flex items-center justify-center text-xl">
-                🐯
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img
+                src="/logo-transparent.png"
+                alt="Palamu Tiger Reserve"
+                className="h-12 w-12 object-contain"
+              />
               <div>
                 <p className="text-cream font-serif font-bold text-lg leading-tight">
                   Palamu Tiger Reserve
