@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import Header from './components/Header.jsx'
@@ -14,15 +14,16 @@ import Contact from './pages/Contact.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
+  const navType = useNavigationType()
   useEffect(() => {
-    // Disable browser scroll restoration so it can't override our scroll
-    if (window.history.scrollRestoration) {
-      window.history.scrollRestoration = 'manual'
+    // PUSH/REPLACE = forward navigation → always start at top
+    // POP = browser back/forward → let browser restore the saved position
+    if (navType !== 'POP') {
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
     }
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    document.documentElement.scrollTop = 0
-    document.body.scrollTop = 0
-  }, [pathname])
+  }, [pathname, navType])
   return null
 }
 

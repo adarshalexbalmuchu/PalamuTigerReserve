@@ -281,7 +281,7 @@ export const properties = [
     contactName: 'Mahuadanr Range',
     contactNumber: '+918987796001',
     image: 'frh',
-    imageUrl: 'https://i.postimg.cc/0y66XPgq/unnamed.jpg',
+    imageUrl: 'https://i.postimg.cc/Sx95GYKC/030523064420-1124f8adaa1aef8b20dc41ddaf64e82d.jpg',
   },
 ]
 
@@ -360,7 +360,7 @@ export const visitSites = [
     highlights: ['Only wolf sanctuary in India', '78 active breeding dens', 'Wolves co-exist peacefully with local villages', 'Also: Green Pit Viper, Whip Scorpion'],
     distanceFromBetla: '95 km south',
     coordinates: '23°27′N 84°02′E',
-    imageUrl: 'https://i.postimg.cc/0y66XPgq/unnamed.jpg',
+    imageUrl: 'https://i.postimg.cc/Sx95GYKC/030523064420-1124f8adaa1aef8b20dc41ddaf64e82d.jpg',
   },
   {
     id: 'kechki-confluence',
@@ -405,7 +405,7 @@ export const visitSites = [
     entryRules: 'No formal entry. Access via forest road.',
     highlights: ['Natural hot springs', 'Tribal heritage site', 'Off-the-beaten-path', 'Photography'],
     distanceFromBetla: '40 km west',
-    imageUrl: 'https://i.postimg.cc/zD94HkJP/images-(2).jpg',
+    imageUrl: 'https://i.postimg.cc/3xbXWthK/hlo-Xm2v-Gz-CUPs8rxt-Wm5TK4fopsmq-LYp-Dge-T8J4o.jpg',
   },
   {
     id: 'kamaldah-lake',

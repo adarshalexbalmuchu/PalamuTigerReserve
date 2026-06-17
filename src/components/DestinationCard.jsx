@@ -14,7 +14,7 @@ export default function DestinationCard({
                  transition-all duration-500 ease-in-out"
     >
       {/* Background image with graceful fallback */}
-      {!imgFailed ? (
+      {!imgFailed && imageUrl ? (
         <img
           src={imageUrl}
           alt={imageAlt || title}
