@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {
@@ -195,6 +195,13 @@ function CustomBuilder() {
   const [ownVehicle, setOwnVehicle] = useState(false)
   const [requiredAmenities, setRequiredAmenities] = useState([])
   const [generatedTrip, setGeneratedTrip] = useState(null)
+
+  // Scroll to top instantly on every step change (step 1→2→3→4 and back)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [step])
 
   const toggleProp = (id) => {
     setSelectedProps(prev =>
@@ -515,6 +522,13 @@ export default function PlanTrip() {
 
   const [mode, setMode] = useState(initialMode)
   const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId)
+
+  // Scroll to top when switching modes or opening/closing a package itinerary
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [mode, selectedPackageId])
 
   const selectedPackage = packages.find(p => p.id === selectedPackageId)
 
