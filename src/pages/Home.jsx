@@ -83,8 +83,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <PlanCard
-              imageUrl="/card-bg-1.jpg"
-              imageAlt="Palamu Tiger Reserve forest"
+              imageUrl="https://i.postimg.cc/BnJY2YRB/EUb3s7i-U0AA0u-DA.jpg"
+              imageAlt="Betla forest stays and safari packages"
               badge="Packages"
               title="Browse Packages"
               location="Palamu Tiger Reserve, Jharkhand"
@@ -94,8 +94,8 @@ export default function Home() {
               state={{ mode: 'packages' }}
             />
             <PlanCard
-              imageUrl="/card-bg-1.jpg"
-              imageAlt="Palamu Tiger Reserve wildlife"
+              imageUrl="https://i.postimg.cc/Dy8R8Mkg/Netarhat-Jharkhand.jpg"
+              imageAlt="Netarhat hill station scenic landscape"
               badge="Custom"
               title="Build My Own Trip"
               location="Design your perfect PTR experience"
