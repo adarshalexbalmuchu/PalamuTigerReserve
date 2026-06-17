@@ -198,9 +198,7 @@ function CustomBuilder() {
 
   // Scroll to top instantly on every step change (step 1→2→3→4 and back)
   useEffect(() => {
-    window.scrollTo(0, 0)
-    document.documentElement.scrollTop = 0
-    document.body.scrollTop = 0
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [step])
 
   const toggleProp = (id) => {
@@ -525,9 +523,7 @@ export default function PlanTrip() {
 
   // Scroll to top when switching modes or opening/closing a package itinerary
   useEffect(() => {
-    window.scrollTo(0, 0)
-    document.documentElement.scrollTop = 0
-    document.body.scrollTop = 0
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [mode, selectedPackageId])
 
   const selectedPackage = packages.find(p => p.id === selectedPackageId)

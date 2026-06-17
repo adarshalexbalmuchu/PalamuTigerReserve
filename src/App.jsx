@@ -19,9 +19,7 @@ function ScrollToTop() {
     // PUSH/REPLACE = forward navigation → always start at top
     // POP = browser back/forward → let browser restore the saved position
     if (navType !== 'POP') {
-      window.scrollTo(0, 0)
-      document.documentElement.scrollTop = 0
-      document.body.scrollTop = 0
+      window.scrollTo({ top: 0, behavior: 'instant' })
     }
   }, [pathname, navType])
   return null
